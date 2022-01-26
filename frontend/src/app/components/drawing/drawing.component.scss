@@ -1,0 +1,82 @@
+@import '../../style/color.scss';
+
+$margin-canvas: 5px 0px 0px 5px;
+
+canvas {
+    cursor: crosshair;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#canvas {
+    z-index: 0;
+    background-color: white;
+}
+
+#canvas-container {
+    position: relative;
+    margin: $margin-canvas;
+}
+
+#previewLayer {
+    z-index: 1;
+    &:focus {
+        outline: none;
+    }
+}
+
+.showOutline {
+    outline: 1px dashed black;
+}
+
+#filters {
+    display: none;
+}
+
+.resizable {
+    position: absolute;
+    margin: $margin-canvas;
+    z-index: 100;
+}
+
+.resizer {
+    width: 8px;
+    height: 8px;
+    background: $primaryColor;
+    position: absolute;
+    border: 1px solid white;
+    z-index: 2;
+}
+
+.resizable .resizer.top-left {
+    cursor: nwse-resize;
+}
+
+.resizable .resizer.top-center {
+    cursor: n-resize;
+}
+
+.resizable .resizer.top-right {
+    cursor: nesw-resize;
+}
+
+.resizable .resizer.left-center {
+    cursor: e-resize;
+}
+
+.resizable .resizer.right-center {
+    cursor: e-resize;
+}
+
+.resizable .resizer.bottom-left {
+    cursor: nesw-resize;
+}
+
+.resizable .resizer.bottom-center {
+    cursor: s-resize;
+}
+
+.resizable .resizer.bottom-right {
+    cursor: nwse-resize;
+}

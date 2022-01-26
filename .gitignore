@@ -1,0 +1,14 @@
+remote-config-import-export/.json
+node_modules
+urls.txt
+output/
+frontend/dist
+.firebase
+.vscode
+firebase-debug.log
+.DS_Store
+ui-debug.log
+/frontend/dist/*
+/backend/videos/*
+/backend/miniature/*
+lib

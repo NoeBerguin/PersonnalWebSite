@@ -1,0 +1,8 @@
+<div class="editor">
+    <app-sidebar-editor #toolbar id="sidebar" (requestCanvasFocus)="focusCanvas()"></app-sidebar-editor>
+    <div #drawingContainer class="drawing-container">
+        <app-drawing (requestDrawingContainerDimensions)="computeDimensionsDrawingContainer(true)"
+            [dimensionsUpdatedEvent]="dimensionsUpdatedSubject.asObservable()" [drawingContainerWidth]="width"
+            [drawingContainerHeight]="height" class="drawing" tabindex="0"></app-drawing>
+    </div>
+</div>

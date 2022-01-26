@@ -1,0 +1,11 @@
+<div id="toolBar" *ngIf="this.rightToolBarService.open" [ngStyle]="{'display': rightToolBarService.display}">
+    <h1 id="titleToolBar">Options</h1>
+    <div class="option">
+        <p>number of obstacles:
+            <mat-slider thumbLabel [value]="aStar.obstacles" (change)="setObstacles($event)" tickInterval="10" step="10"
+                min="0" max="1000" aria-label="units">
+            </mat-slider>
+        </p>
+        <button mat-raised-button routerLink="/algorithme" (click)="reset()">Reset</button>
+    </div>
+</div>

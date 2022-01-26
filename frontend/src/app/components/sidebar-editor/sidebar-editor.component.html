@@ -1,0 +1,56 @@
+<mat-sidenav-container [hasBackdrop]="false">
+    <mat-sidenav #toolProperties mode="side" position="end" [disableClose]="true" [opened]="true">
+        <div *ngIf="currentTool" [ngSwitch]="currentTool.name">
+            <app-pencil-options class="tool-options" *ngSwitchCase="'Crayon'"></app-pencil-options>
+            <app-brush-options class="tool-options" *ngSwitchCase="'Brush'"></app-brush-options>
+            <app-rectangle-options class="tool-options" *ngSwitchCase="'Rectangle'"></app-rectangle-options>
+            <app-ellipse-options class="tool-options" *ngSwitchCase="'Ellipse'"></app-ellipse-options>
+            <app-line-option class="tool-options" *ngSwitchCase="'Line'"></app-line-option>
+            <app-erase-option class="tool-options" *ngSwitchCase="'Eraser'"></app-erase-option>
+            <app-polygon-option class="tool-options" *ngSwitchCase="'Polygon'"></app-polygon-option>
+            <app-selection-option class="tool-options" *ngSwitchCase="'Selection'"></app-selection-option>
+            <app-bucket-option class="tool-options" *ngSwitchCase="'Bucket'"></app-bucket-option>
+            <app-text class="tool-options" *ngSwitchCase="'Text'" (textPropertyChange)="onTextPropertyChange()">
+            </app-text>
+            <app-eyedropper-option *ngIf="currentTool.name === 'Eyedropper'"></app-eyedropper-option>
+            <app-stamp-options class="tool-options" *ngSwitchCase="'Stamp'"></app-stamp-options>
+            <app-grid-option class="tool-options" *ngSwitchCase="'Grid'"></app-grid-option>
+            <app-calligraphy-options class="tool-options" *ngSwitchCase="'Calligraphy'"></app-calligraphy-options>
+            <app-spray-options class="tool-options" *ngSwitchCase="'Spray'"></app-spray-options>
+        </div>
+    </mat-sidenav>
+    <app-grid-option></app-grid-option>
+    <mat-sidenav-content>
+        <div id="tool-container">
+            <ul id="tools">
+                <li *ngFor="let tool of tools" matTooltip="{{ tool.tooltip }}" [matTooltipPosition]="'right'">
+                    <button mat-button [ngClass]="{ currentTool: isCurrentTool(tool) }" (click)="onToolChanged(tool)">
+                        <mat-icon>{{ tool.iconName }}</mat-icon>
+                    </button>
+                </li>
+            </ul>
+            <div id="other-tools">
+                <hr />
+                <div id="undo-redo-contaner">
+                    <app-undo-redo></app-undo-redo>
+                </div>
+                <hr />
+                <div id="colors-container">
+                    <app-recent-colors></app-recent-colors>
+                    <app-color-tool></app-color-tool>
+                </div>
+                <hr />
+                <div id="other-functionality-container">
+                    <div class="other-functionality-button">
+                        <button matTooltip="Accueil" matTooltipPosition="right" mat-button routerLink="/">
+                            <mat-icon>home</mat-icon>
+                        </button>
+                    </div>
+                    <app-create-new-drawing class="other-functionality-button"></app-create-new-drawing>
+                    <app-export-drawing class="other-functionality-button"></app-export-drawing>
+                    <app-open-guide class="other-functionality-button" [inMenu]="false"></app-open-guide>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

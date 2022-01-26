@@ -1,0 +1,696 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>
+<mat-tab-group>
+    <div class="content">
+        <mat-tab label="Divers">
+            <h1>Créer un dessin</h1>
+            <div>
+                Pour créer un dessin il faut cliquer sur créer un dessin sur
+                la page principale. Le site vous mènera à la route "editor"
+                et vous pourrez utiliser tous les outils disponibles de
+                l'application. L'interface est faite de façon à ce que les
+                fonctionalités soient présentés à gauche. Vous pouvez cliquer
+                sur l'outil que vous voulez et ses propriétés seront affichées
+                à droite.
+
+                <br/>
+
+                <img class="create-drawing" alt="" src="../../../assets/screenshots/entry-point.png"/>
+                <img class="create-drawing" alt="" src="../../../assets/screenshots/interface.png"/>
+            </div>
+            <h1>Carrousel de dessins</h1>
+            <div>
+                <p>Il est possible d'accéder au carrousel de dessin
+                    depuis le menu principal et avec le raccourcis ctrl-g
+                    depuis la vue de dessin. On peut filtrer les dessins
+                    affichés à l'aide des étiquettes assignées et decider de charger un dessin.
+                </p>
+                <img alt="" src="../../../assets/screenshots/gallery.png"/>
+            </div>
+            <h1>Sauvegarde automatique et manuelle</h1>
+            <div>
+                <p> Une sauvegarde automatique est déclanchée après la création
+                    d'un dessin, l'ouverture d'un dessin et à chaque
+                    modification de la surface de dessin. La sauvegarde est
+                    faite localement sur le navigateur de
+                    l'utilisateur. En tout temps, il est possible de
+                    sauvegarder manuellement un dessin en utilisant le
+                    raccourcis ctrl-s.
+                </p>
+                <h2> Sauvegarde manuelle </h2>
+                <p>
+                    Dans la fenêtre de sauvegarde manuelle, il est possible d'associer des étiquettes à
+                    l'image que l'on souhaite sauvegarder. Les étiquettes ajoutées à l'image apparaissent
+                    au dessus du bouton d'envoi et d'annulation. En cliquant sur le x, il est possible d'enlever
+                    une étiquette. Une fois sauvegardé, le dessin apparaîtra dans le carroussel de dessins.
+                    Après avoir cliquer sur le bouton sauvergarder, un message apparaîtra à l'écran afin
+                    de confirmer la réussite de la sauvegarde du dessin.
+                </p>
+                <p class="important-message">Le titre est un champ oligatoire à remplir</p>
+                <img id="save-confirm" alt="" src="../../../assets/screenshots/save-confirm.png"/>
+                <img class="max-image-height" alt="" src="../../../assets/screenshots/sauvegarder-dessin.png"/>
+            </div>
+            <h1>Exportation</h1>
+            <div>
+                Lorsqu'on fait un dessin, il est possible de
+                l'exporter en format JPG ou PNG. Cette fonctionalité
+                permet aussi d'appliquer un filtre parmi cinq sur le
+                dessin. Les cinq filtres sont disponibles dans l'onglet
+                « filtre ». Il est possible d'envoyer le dessin
+                directement par email au lieu de l'exporter localement en cliquant
+                sur le bouton courriel.
+                La taille de l'image exportée est présentée au coin inférieur droit.
+                <p class="important-message">
+                    Le titre est un champ oligatoire à remplir
+                    <br/>
+                    L'image sera exportée avec la taille exacte de la zone de dessin
+                </p>
+
+                <img class="max-image-height" alt="" src="../../../assets/screenshots/export-window.png"/>
+                <img class="max-image-height" alt="" src="../../../assets/screenshots/export-filters.png"/>
+
+            </div>
+        </mat-tab>
+        <mat-tab label="Dessiner">
+            <h1>Outils</h1>
+            <div>
+                Les outils sont présents sur la barre latérale gauche. Il
+                est possible de les sélectionner en cliquant sur l'outil ou en utilisant les
+                raccourcis suivant. Les propriétés de chaque outil peuvent également être manipulées.
+
+                <br/>
+                <br/>
+                <table>
+                    <tr>
+                        <th>Résultats</th>
+                        <th>Touche</th>
+                    </tr>
+                    <tr>
+                        <td>Crayon</td>
+                        <td>C</td>
+                    </tr>
+                    <tr>
+                        <td>Pinceau</td>
+                        <td>W</td>
+                    </tr>
+                    <tr>
+                        <td>Plume</td>
+                        <td>P</td>
+                    </tr>
+                    <tr>
+                        <td>Aérosol</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>Rectangle</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Ellipse</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Polygone</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Ligne</td>
+                        <td>L</td>
+                    </tr>
+                    <tr>
+                        <td>Texte</td>
+                        <td>T</td>
+                    </tr>
+                    <tr>
+                        <td>Sceau de peinture</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>Efface</td>
+                        <td>E</td>
+                    </tr>
+                    <tr>
+                        <td>Étampe</td>
+                        <td>D</td>
+                    </tr>
+                    <tr>
+                        <td>Pipette</td>
+                        <td>I</td>
+                    </tr>
+                    <tr>
+                        <td>Rectangle de sélection</td>
+                        <td>R</td>
+                    </tr>
+                    <tr>
+                        <td>Éllipse de sélection</td>
+                        <td>S</td>
+                    </tr>
+                    <tr>
+                        <td>Baguette Magique</td>
+                        <td>V</td>
+                    </tr>
+                </table>
+
+                <br/>
+
+                <h1> Options de la zone de travail </h1>
+                Les options de la zone de travail présentent les outils de grille et de magnétisme
+                <table>
+                    <tr>
+                        <th>Options</th>
+                        <th>Touche</th>
+                    </tr>
+                    <tr>
+                        <td>Afficher/masquer la grille</td>
+                        <td>G</td>
+                    </tr>
+                    <tr>
+                        <td>Activer/Désactiver le magnétisme</td>
+                        <td>M</td>
+                    </tr>
+                    <tr>
+                        <td>Augmenter la taille des carrés de la grille au prochain multiple de 5</td>
+                        <td>+</td>
+                    </tr>
+                    <tr>
+                        <td>Diminuer la taille des carrés de la grille au prochain multiple de 5 </td>
+                        <td>-</td>
+                    </tr>
+                </table>
+
+                <br/>
+
+                <h1> Options de manipulation de la sélection </h1>
+                <table>
+                    <tr>
+                        <th>Options</th>
+                        <th>Touche</th>
+                    </tr>
+                    <tr>
+                        <td>Couper la sélection</td>
+                        <td>Ctrl-X</td>
+                    </tr>
+                    <tr>
+                        <td>Copier la sélection</td>
+                        <td>Ctrl-C</td>
+                    </tr>
+                    <tr>
+                        <td>Coller la sélection</td>
+                        <td>Ctrl-V</td>
+                    </tr>
+                    <tr>
+                        <td>Supprimer la sélection</td>
+                        <td>Delete</td>
+                    </tr>
+                    <tr>
+                        <td>Tout sélectioner</td>
+                        <td>Ctrl-A</td>
+                    </tr>
+                    <tr>
+                        <td>Déplacer la sélection vers la gauche</td>
+                        <td>Flèche gauche</td>
+                    </tr>
+                    <tr>
+                        <td>Déplacer la sélection vers la droite</td>
+                        <td>Flèche droite </td>
+                    </tr>
+                    <tr>
+                        <td>Déplacer la sélection vers le bas</td>
+                        <td>Flèche en bas</td>
+                    </tr>
+                    <tr>
+                        <td>Déplacer la sélection vers le haut</td>
+                        <td>Flèche en haut</td>
+                    </tr>
+                    <tr>
+                        <td>Annuler</td>
+                        <td>Ctrl-Z</td>
+                    </tr>
+                    <tr>
+                        <td>Refaire</td>
+                        <td>Ctrl-Shift-Z</td>
+                    </tr>
+
+                </table>
+
+                <br/>
+
+                <h1> Options de fichier </h1>
+                <table>
+                    <tr>
+                        <th>Options</th>
+                        <th>Touche</th>
+                    </tr>
+                    <tr>
+                        <td>Créer un nouveau dessin</td>
+                        <td>Ctrl-O</td>
+                    </tr>
+                    <tr>
+                        <td>Sauvegarder le dessin</td>
+                        <td>Ctrl-S</td>
+                    </tr>
+                    <tr>
+                        <td>Voir le carrousel de dessins</td>
+                        <td>Ctrl-G</td>
+                    </tr>
+                    <tr>
+                        <td>Exporter le dessin </td>
+                        <td>Ctrl-E</td>
+                    </tr>
+                </table>
+            </div>
+
+            <br/>
+
+            <h2>Crayon</h2>
+            <div>
+                Le crayon permet de faire des dessins librement et
+                peut-être selectionné sur la barre verticale à gauche.
+                <br/>
+                <iframe
+                    src="https://www.youtube.com/embed/UdWQgKOryFM"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <h2>Pinceau</h2>
+            <div>
+                Le pinceau est composé de cinq filtres qui sont
+                visibles sur la barre de propriétés losrqu'on clique
+                dessus.
+                <br/>
+                <iframe
+                    src="https://www.youtube.com/embed/_TmSF3Ni0-I"
+                    frameborder="0"
+                    allow="accelerometer; autoplay;
+                         clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <h2>Plume</h2>
+
+            <div>
+                L'outil plume est similaire au crayon. L'unique différence est que la pointe de cet outil
+                est une ligne au lieu d'un point. Il est possible de choisir la longueur ainsi que l'angle
+                de la pointe afin de modifier les traits dessinés.
+
+                <br/>
+
+                <iframe
+                    src="https://www.youtube.com/embed/umi3wm_8LNE"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+            <h2>Aérosol</h2>
+            <div>
+                Cet outil simule un effet de peinture en aérosol. Dès que le bouton est enfoncé, un jet de peinture est
+                vaporisé sous le pointeur de la souris. L’outil continu ensuite d’émettre de la peinture à intervalle
+                régulier jusqu’à qu’à ce que le bouton soit relâché. Il est possible de faire varier le nombre d'émission
+                par seconde, le diamètre des goutelettes et le diamètre du jet.
+
+                <br/>
+
+                <iframe src="https://www.youtube.com/embed/it77bH1mwOg"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+
+            </div>
+            <h2>Rectangle</h2>
+            <div>
+                Lorsque l'outil rectangle est choisi, il est possible de
+                dessiner des rectangles ou des carrés. Pour ce faire,
+                l'utilisateur doit faire un clique gauche à une
+                position de départ et relâche à la position finale. La
+                touche shift permet de dessiner un carré avec comme longueur le
+                plus petit des côtés du périmètre fait par la souris. La touche
+                escape permet d'annuler le dessin courant.
+                <br/>
+                <iframe
+                    src="https://www.youtube.com/embed/iNJrAj3Qx8c"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write;
+                         encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <h2>Ellipse</h2>
+            <div>
+                Lorsque l'outil ellipse est choisi, il est possible de
+                dessiner des ellipses ou des cercles. Pour ce faire,
+                l'utilisateur doit faire un clique gauche à une position de départ
+                et relâche à la position finale. En tout temps, le périmètre est
+                dessiné en pointillés. L'ellipse a donc la largeur et la
+                hauteur du périmètre. La touche shift permet de
+                dessiner un cercle avec comme diamètre le plus petit des côtés du
+                périmètre fait par la souris. La touche escape permet d'annuler le
+                dessin courant.
+                <br/>
+                <iframe
+                    src="https://www.youtube.com/embed/BMgo0-W83XM"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write;
+                         encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <h2>Polygone</h2>
+            <div>
+                L'outil polygone permet de dessiner plusieurs formes (des polygones) allant de 3 à 12 côtés.
+                Pour ce faire, l'utilisateur doit faire un clique gauche à une position de départ
+                et relâcher à la position finale. En tout temps, le périmètre est dessiné en pointillés.
+                Le polygone a donc la largeur et la hauteur du périmètre. La touche escape permet d'annuler la forme courante.
+                Il est possible de choisir l'épaisseur du contour de la forme dessinée si l'option contour est selectionnée.
+                <br/>
+
+                <iframe
+                    src="https://www.youtube.com/embed/EWChfA6tPH0"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+            <h2>Ligne</h2>
+            <div>
+                Lorsque l'outil ligne est sélectionné, il est possible
+                de faire des lignes droites entre deux cliques gauches
+                consécutifs. La touche escape permet d'annuler la
+                ligne en cours. La touche backspace permet d'annuler
+                la ligne faite la plus récente. La touche shift permet
+                l'alignement. Un double clic à 20 pixels du point
+                initial de la ligne lie le dernier segment au point
+                initial.
+                <br/>
+                <iframe
+                    src="https://www.youtube.com/embed/ClZqhBwHFjs"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write;
+                         encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <h2>Texte</h2>
+            <div>
+                Cet outil permet d’écrire des chaines de caractères sur la surface de dessin. Pour l’utiliser, il suffit de
+                cliquer à l’endroit où l’on veut écrire. Il n’y a pas de retour à la ligne automatique, l’utilisateur doit
+                appuyer sur la touche d’entrée (Enter) pour créer une nouvelle ligne. Pendant l’édition du texte, il
+                est possible de se déplacer dans le texte avec les touches directionnelles (flèches) du clavier et
+                de supprimer avec la touche de retour arrière (Backspace) ou la touche de suppression (Delete).
+                Pour terminer la création d’un texte, il suffit de cliquer à l’extérieur de celui-ci ou de sélectionner
+                un autre outil. Appuyer sur la touche d’échappement (Escape) annule la création du texte.
+
+                <br/>
+
+                Il est possible de définir la police du texte, la taille de la police, l'alignement du texte et le style du texte dans
+                le panneau de configuration de l'outil.
+
+                <br/>
+
+                <iframe
+                    src="https://www.youtube.com/embed/eZxrc5GfOJ8"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+            <h2> Sceau de peinture </h2>
+            <div>
+
+                L'outil « sceau de peinture » permet d'effectuer un remplissage qui colore une ou
+                plusieurs étendues de pixels en fonction de leur couleur. L’outil peut s’utiliser
+                selon deux modes d’opérations : « pixels contigus » et
+                « pixels non contigus ».
+
+                <br/>
+
+                <h3>Pixels contigus (clic gauche):</h3>
+                <p> Chaque pixel voisin partageant la couleur du pixel selectionné est ajouté
+                    à la région. Pour chaque nouveau pixel ajouté, la vérification est effectuée à nouveau.
+                    Le résultat de ce mode est une région de pixels connectés partageant la même couleur.
+                    Enfin, la couleur princale est appliquée à tous les pixels de la région</p>
+
+                <h3>Pixels non contigus (clic droit):</h3>
+                <p> Chaque pixel du canvas (pas forcément voisin) partageant la couleur du pixel selectionné est ajouté
+                    à la région. Ensuite, la couleur principale est appliquée à tous les pixels de la région. </p>
+
+                <h3> Tolérance </h3>
+                <p> Permet de colorer des pixels partageant une couleur similaire (nuances de couleurs)
+                    Un pourcentage de zéro indique aucune tolérance : seuls les pixels de couleur indentique sont identifiés
+                    comme étant à colorer. Plus le pourcentage monte, plus l’écart de couleur toléré est grand. Un
+                    pourcentage de 100 indique une tolérance totale. C’est-à-dire que toutes les couleurs sont acceptées.
+                    Il en résulte donc que l’entièreté des pixels de la surface de dessin sera à colorer.</p>
+
+                <br/>
+
+                <iframe src="https://www.youtube.com/embed/za4aDfwGHwE"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write;
+                             encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <h2>Efface</h2>
+            <div>
+                L'outil efface peut être sélectionné dans la barre
+                latérale gauche et son épaisseur peut être modifier en
+                faisant apparître la barre de propriétés en cliquant
+                dessus.
+                <br/>
+                <iframe
+                    src="https://www.youtube.com/embed/kjFUTQJ9_yI"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write;
+                         encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <h2>Étampe</h2>
+            <div>
+                L’étampe permet d’apposer de petites images sur la surface de dessin. Pour l’utiliser, il suffit d’un
+                simple clic du bouton gauche à l’endroit où l’on désire apposer l’image. L'angle d'orientation de l'étampe
+                peut être modifiée à l'aide de la roulette de la souris.
+
+                <p>
+                    Le panneau d’attributs permet de configurer :
+                    <br/>
+                    • Le taille de l’étampe
+                    <br/>
+                    • L'angle d’orientation de l’étampe en degrés
+                    <br/>
+                    • Le choix d’image
+                </p>
+
+                <br/>
+
+                <iframe
+                    src="https://www.youtube.com/embed/0B_7xHoCUKE"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+            <h2> Pipette </h2>
+            <div>
+
+                L'outil pipette permet de sélectionner la couleur
+                du pixel qui se trouve directement sous le pointeur de la souris.
+                Un clic avec le bouton gauche l'assigne à la couleur
+                principale et un clic avec le bouton droit l'assigne
+                à la couleur secondaire.
+
+                Grâce au cercle de prévisualisation se trouvant sur
+                le panneau d'attributs, il est possible de sélectionner
+                facilement et précisément un pixel particulier. Le cercle
+                est une représentation surdimensionée du canvas, comme une
+                loupe, qui suit le pointeur de la souris.
+
+                <br/>
+
+                <iframe
+                    src="https://www.youtube.com/embed/e2z-QXEnrDk"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write;
+                         encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h1> La sélection </h1>
+            <br/>
+            <h2> Rectangle de sélection </h2>
+            <div>
+                Le rectangle de sélection permet de faire une sélection rectangulaire. Pour sélectionner,
+                l'utilisateur doit faire un clique gauche à une position de départ et relâcher à la position
+                finale. Les éléments de la surface de dessin se trouvant à l'intérieur de la zone pointillée
+                rectangulaire sont sélectionnés. Il devient désormais possible d'effectuer plusieurs manipulation (décrites
+                ci-dessous) sur la sélection.
+
+                <br/>
+
+                L’utilisation de la touche d’échappement (Escape) fait annuler l’opération et l’utilisation
+                de la touche Shift permet de forcer la création d’un carré plutôt qu’un rectangle.
+
+            </div>
+            <h2> Éllipse de sélection </h2>
+            <div>
+                L'éllipse de sélection permet de faire une sélection éllipsoïdale. Pour sélectionner,
+                l'utilisateur doit faire un clique gauche à une position de départ et relâcher à la position
+                finale. Les éléments de la surface de dessin se trouvant à l'intérieur de la zone pointillée
+                éllipsoïdale ou circulaire sont sélectionnés. Il devient désormais possible d'effectuer plusieurs
+                manipulation (décrites ci-dessous) sur la sélection.
+
+                <br/>
+
+                L’utilisation de la touche d’échappement (Escape) fait annuler l’opération et l’utilisation
+                de la touche Shift permet de forcer la création d’un cercle plutôt qu’une éllipse.
+            </div>
+            <h2> Baguette magique </h2>
+            <div>
+                La baguette magique permet de sélectionner des pixels selon leur couleur. Les pixels partageant la même
+                couleur seront sélectionner selon les deux modes ci-dessous:
+
+                <br/>
+
+                Le mode pixels contigus (clic gauche de la souris): une seule sélection sera formée avec la région de pixels. Celle-ci sera
+                délimitée par un contour de sélection qui sera lui-même encadré par une boite englobante.
+
+                <br/>
+
+                Le mode pixels non contigus (clic droit de la souris): la sélection sera formée d’un ou plusieurs groupes de pixels
+                disjoints. Chaque groupe aura son propre contour de sélection. L’ensemble de ces groupes sera lui
+                aussi encadré par une boite englobante.
+
+                <br/>
+
+                Pour terminer les manipulations de la sélection, il faut appuyer sur la touche "Escape".
+
+            </div>
+
+            <br/>
+
+            <iframe
+                src="https://www.youtube.com/embed/TJbXDs-OTKs"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+
+            <br/>
+
+            <h1>Manipulations de sélection</h1>
+            <div>
+                Lorsqu'on a une sélection de faite il est possible de
+                faire les manipulations suivantes.
+            </div>
+            <h2>Déplacement</h2>
+            <div>
+                Il est possible de déplacer la sélection courante avec
+                le bouton gauche de la souris. La sélection peut aussi
+                être déplacer à l'aide des quatre flèches.
+            </div>
+            <h2>Redimensionement</h2>
+            <div>
+                Lors d'une sélection il y a huit points de contrôle
+                qui autour du périmètre de sélection qui permettent le
+                redimensionement. Si la touche shift appuyée pendant
+                le redimensionement dans un des coins, le dessin garde
+                son ratio.
+            </div>
+            <h2>Rotation</h2>
+            <div>
+                La rotation se fait autour du centre de la boite
+                englobante à l'aide de la roulette.
+            </div>
+            <h2>Presse-papier</h2>
+            <div>
+                Les fonctions de copier, couper et coller sont toutes
+                disponibles lors d'une sélection. Les raccourcis
+                ctrl-c, ctrl-x et ctrl-v les activent
+                respectivement. Pour supprimer la sélection, on
+                utilise la touche delete. Ses fonctionalités sont
+                aussi accessible depuis la barre latérale.
+            </div>
+            <h2>Terminer une sélection</h2>
+            <div>
+                En tout temps, il est possible de terminer une
+                sélection en appuyant la touche escape ou en cliquant
+                en dehors de la sélection.
+            </div>
+
+            <br/>
+
+            <h1>Annuler-refaire</h1>
+            <div>
+                Lorsqu'on fait un dessin, il est toujours possible
+                d'annuler ou de refaire une action. Pour se faire on
+                peut utiliser les raccourcis ctrl-z pour annuler et
+                ctrl-shift-z pour refaire. Il est aussi possible
+                d'accéder à cette fonctionalité depuis la barre
+                latérale .
+            </div>
+
+            <iframe src="https://www.youtube.com/embed/DrIp2UJtxAU"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write;
+                         encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+
+            <h1>Palette de couleur</h1>
+            <div>
+                La palette de couleur est positionnée sur la barre
+                verticale à gauche. Les couleurs principales sont
+                affichées sous formes de deux carrés colorés de la
+                couleur correspondante. Le rectangle de gauche
+                correspondond à la couleur principale et celle de
+                droite est la couleur secondaire. Lorsqu'on clique sur
+                une couleur l'éditeur de couleur s'ouvre. Lorsqu'on
+                modifie une couleur elle est ajoutée aux couleurs
+                récentes. Celles-ci sont positionnées au-dessus des
+                couleurs principales au fur et à mesure qu'elles sont
+                ajoutées.
+                <br/>
+                <iframe
+                    src="https://www.youtube.com/embed/fSmFDLBFcqg"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write;
+                         encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h1>Grille et magnetisme</h1>
+            <div>
+                Sur la surface de dessin, il est possible d'afficher
+                une grille à l'aide de la touche G et d'augmenter ou
+                de réduire la taille des carrés à l'aide des touches +
+                et -. Il est alors possible d'activer la fonctionalité
+                de magnétisme qui permet d'alligner une sélection en x
+                et en y lors d'un déplacement. Cette fonctionalité est
+                activé en utilisant la touche M. Il est possible de
+                sélectionner l'un des huit points de contrôle comme
+                point d'encrage. Il est aussi possible de choisir le
+                centre de la boite englobante comme point d'encrage.
+
+                <br/>
+
+                <iframe
+                    src="https://www.youtube.com/embed/RW5lfb614xQ"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+        </mat-tab>
+    </div>
+</mat-tab-group>

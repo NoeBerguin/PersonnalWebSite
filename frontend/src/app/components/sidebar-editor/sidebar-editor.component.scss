@@ -1,0 +1,97 @@
+@import "../../style/color.scss";
+
+mat-sidenav-container {
+  z-index: 100;
+  overflow: visible;
+}
+
+#tool-container {
+  height: auto;
+  width: 160px;
+  min-height: 100vh;
+  background-color: $primaryColor;
+  overflow: hidden;
+}
+
+#tools {
+  list-style-type: none;
+  padding: 0px 0px 0px 5px;
+
+  li {
+    padding: 2px 5px;
+    display: inline-block;
+    button {
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      border-radius: 10px;
+      color: $textColor;
+      margin-bottom: 5px;
+      border: 1px solid white;
+    }
+  }
+}
+
+.currentTool {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid black !important;
+}
+
+#other-tools {
+  height: auto;
+}
+
+mat-sidenav {
+  margin-left: 160px;
+  width: 250px;
+  background-color: #5f5f5f;
+}
+
+#other-functionality-container {
+  width: 100%;
+}
+
+.other-functionality-button {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+.type-drawing-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.property {
+  margin: 5px;
+
+  label {
+    width: 100%;
+    display: block;
+  }
+
+  .type-textalignment {
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+
+  .sliderWrapper {
+    display: flex;
+    margin: 5px;
+  }
+
+  .title-property {
+    text-align: center;
+  }
+
+  .type-drawing-group  > mat-radio-button {
+    padding-top: 5px;
+  }
+}
+
+hr {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

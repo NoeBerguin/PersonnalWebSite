@@ -1,0 +1,39 @@
+<link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<div class="sidebar">
+  <div class="logo-details">
+    <i class="bx bxl-c-plus-plus icon"></i>
+    <div class="logo_name">Noe Berguin</div>
+    <i class="bx bx-menu" id="btn" (click)="openSidebar()"></i>
+  </div>
+  <ul class="nav-list">
+    <li>
+      <a routerLink="/curriculumVitae" (click)="closeToolBar()">
+        <i class="bx bx-brain"></i>
+        <span class="links_name">Curriculum Vitae</span>
+      </a>
+      <span class="tooltip">Curriculum Vitae</span>
+    </li>
+    <li>
+      <a routerLink="/editor" (click)="closeToolBar()">
+        <i class='bx bx-paint'></i>
+        <span class="links_name">Application dessin</span>
+      </a>
+      <span class="tooltip">Application dessin</span>
+    </li>
+    <li>
+      <a routerLink="/algorithme" (click)="openToolBar()">
+        <i class='bx bx-ghost'></i>
+        <span class="links_name">A*</span>
+      </a>
+      <span class="tooltip">A*</span>
+    </li>
+    <li>
+      <a routerLink="/dijkstra" (click)="openToolBar()">
+        <i class='bx bx-shape-polygon'></i>
+        <span class="links_name">Dijkstra</span>
+      </a>
+      <span class="tooltip">Dijkstra</span>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,8 @@
+<div class="appContainer" id="appContainer">
+  <app-sidebar class="sidebar"></app-sidebar>
+  <section class="home-section" [ngStyle]="{'width': rightToolBarService.width}">
+    <router-outlet></router-outlet>
+  </section>
+  <app-tool-bar></app-tool-bar>
+</div>
+<!--<app-dialog-modal></app-dialog-modal>-->

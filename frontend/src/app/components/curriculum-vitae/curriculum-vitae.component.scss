@@ -1,0 +1,314 @@
+.containerr {
+  //border: red solid 1px;
+  width: 100%;
+  height: 100vh;
+  /* CSS Smooth Scroll */
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+section {
+  //border: blue solid 1px;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+}
+
+section h1 {
+  display: flex;
+  height: 10%;
+  font-size: 4rem;
+  //border: rgb(0, 255, 42) solid 1px;
+  margin: auto;
+  align-items: center;
+  flex-direction: row;
+  font-family: Helvetica;
+  font-size: 4rem;
+  margin-top: 5%;
+}
+
+.sousSection {
+  display: flex;
+  //border: rgb(204, 0, 255) solid 1px;
+  width: 100%;
+  margin: auto;
+  //margin-top: 2.5%;
+  flex-direction: row;
+  height: 100%;
+  margin-bottom: 10%;
+}
+
+.mainBox {
+  display: flex;
+  //border: red solid 1px;
+  flex-direction: column;
+  height: 100%;
+  width: 70%;
+  margin: auto;
+  align-items: center;
+}
+
+#s1 {
+  background: url("../../../assets/section1.jpg");
+}
+
+#s2 {
+  background: url("../../../assets/section2.jpg");
+}
+
+.box {
+  display: flex;
+  //border: blue solid 1px;
+  width: 45%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  color: rgb(0, 0, 0);
+}
+
+p {
+  text-align: justify;
+  font: 18px sans-serif;
+  line-height: 150%;
+}
+
+#photoProfil {
+  margin: auto;
+  border-radius: 1%;
+}
+
+/* Solid border */
+hr.solid {
+  border-top: 3px solid #bbb;
+  width: 80%;
+  margin: auto;
+  margin-top: 2.5%;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+::selection {
+  color: #fff;
+  background: #b4b4b4;
+}
+.skill-bars {
+  padding: 25px 30px;
+  width: 100%;
+  height: 70%;
+  margin: auto;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  //border: red solid 1px;
+}
+.skill-bars .bar {
+  margin: 20px 0;
+}
+.skill-bars .bar:first-child {
+  margin-top: 0px;
+}
+.skill-bars .bar .info {
+  margin-bottom: 5px;
+}
+.skill-bars .bar .info span {
+  font-weight: 500;
+  font-size: 17px;
+  opacity: 0;
+  animation: showText 0.5s 1s linear forwards;
+}
+@keyframes showText {
+  100% {
+    opacity: 1;
+  }
+}
+.skill-bars .bar .progress-line {
+  height: 10px;
+  width: 100%;
+  background: #f0f0f0;
+  position: relative;
+  transform: scaleX(0);
+  transform-origin: left;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05),
+    0 1px rgba(255, 255, 255, 0.8);
+  animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+@keyframes animate {
+  100% {
+    transform: scaleX(1);
+  }
+}
+.bar .progress-line span {
+  height: 100%;
+  position: absolute;
+  border-radius: 10px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: #ee9065;
+  animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+.bar .progress-line.html span {
+  width: 80%;
+}
+.bar .progress-line.css span {
+  width: 50%;
+}
+.bar .progress-line.typeScript span {
+  width: 95%;
+}
+.bar .progress-line.python span {
+  width: 85%;
+}
+.bar .progress-line.mysql span {
+  width: 75%;
+}
+
+.bar .progress-line.java span {
+  width: 75%;
+}
+
+.bar .progress-line.c span {
+  width: 95%;
+}
+
+.progress-line span::before {
+  position: absolute;
+  content: "";
+  top: -10px;
+  right: 0;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  border-top-color: #000;
+  opacity: 0;
+  animation: showText2 0.5s 1.5s linear forwards;
+}
+.progress-line span::after {
+  position: absolute;
+  top: -28px;
+  right: 0;
+  font-weight: 500;
+  background: #000;
+  color: #fff;
+  padding: 1px 8px;
+  font-size: 12px;
+  border-radius: 3px;
+  opacity: 0;
+  animation: showText2 0.5s 1.5s linear forwards;
+}
+@keyframes showText2 {
+  100% {
+    opacity: 1;
+  }
+}
+.progress-line.html span::after {
+  content: "90%";
+}
+.progress-line.css span::after {
+  content: "50%";
+}
+.progress-line.typeScript span::after {
+  content: "95%";
+}
+.progress-line.python span::after {
+  content: "85%";
+}
+.progress-line.mysql span::after {
+  content: "75%";
+}
+.progress-line.java span::after {
+  content: "75%";
+}
+.progress-line.c span::after {
+  content: "95%";
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+#mainBox2 {
+  background: rgba(255, 255, 255, 0.8);
+}
+.logo {
+  width: 80px;
+  height: 80px;
+
+  border-radius: 50%;
+  border: rgb(100, 100, 100) solid 3px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //border: blue solid 1px;
+  padding: 3%;
+}
+
+.skill-bars2 {
+  padding: 25px 30px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  //border: red solid 1px;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#s3 {
+  background: url("../../../assets/section3.jpg");
+}
+
+#mainBox3 {
+  color: #fff;
+  //border: red solid 1px;
+  width: 100%;
+}
+
+.projects {
+  //border: rgb(247, 0, 255) solid 1px;
+  display: flex;
+  width: 95%;
+  height: 95%;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: rgb(100, 100, 100) solid 3px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  height: 50%;
+  padding: 2%;
+  color: #000;
+}
+
+.subTitle {
+  //border: red solid 1px;
+  color: rgb(100, 100, 100);
+  text-align: center;
+  font-size: xx-large;
+}
+
+.plusBtn {
+  //border: blue solid 1px;
+  background-color: rgba(255, 255, 255, 1);
+  border: rgb(100, 100, 100) solid 3px;
+  color: #000;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+  padding: 4%;
+}
