@@ -138,7 +138,7 @@ export class DijlstraService {
     this.currentCell = this.findCurrentCell(this.currentConnection);
 
     let i = 0;
-    while (this.currentCell !== endDijkstraCell && i < 3) {
+    while (this.currentCell !== endDijkstraCell) {
       this.addCellConnectionsToOpenList(this.currentCell, this.currentConnection);
       this.currentConnection = this.findMinConnection(this.openList);
       this.colorConnection(this.currentConnection, 'red');
@@ -146,10 +146,10 @@ export class DijlstraService {
       this.removeConnectionToOpenList(this.currentConnection);
       this.currentCell = this.findCurrentCell(this.currentConnection);
       i++;
-      console.log(i)
+      console.log(this.openList)
     }
 
-    while (this.currentConnection.parent !== null) {
+    while (this.currentConnection.DijkstraCellA !== startDijkstraCell || this.currentConnection.DijkstraCellB !== startDijkstraCell) {
       this.colorConnection(this.currentConnection, 'blue');
       this.currentConnection = this.currentConnection.parent;
     }
@@ -167,7 +167,7 @@ export class DijlstraService {
   findMinConnection(list: Connection[]): Connection {
     let min: Connection = list[0];
     for (let i = 1; i < list.length; i++) {
-      if (list[i].value > min.value) {
+      if (list[i].value < min.value) {
         min = list[i];
       }
     }
@@ -179,6 +179,7 @@ export class DijlstraService {
       this.openList.push(connection);
       if (parentConnection !== null) {
         connection.value += parentConnection.value;
+        connection.parent = parentConnection;
       }
       //this.colorConnection(connection, 'red');
     }
@@ -198,6 +199,7 @@ export class DijlstraService {
     for (let connection of this.openList) {
       if (connection !== connectionToFind) {
         newList.push(connection);
+        console.log('erease');
       }
     }
     this.openList = newList;
