@@ -68,6 +68,8 @@ import { SidebarEditorComponent } from './components/sidebar-editor/sidebar-edit
 import { AlgorithmeComponent } from './components/algorithme/algorithme.component';
 import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 import { DijkstraComponent } from './components/dijkstra/dijkstra.component';
+import { HorizonComponent } from './components/horizon/horizon.component';
+import { SnakeComponent } from './components/snake/snake.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +115,8 @@ import { DijkstraComponent } from './components/dijkstra/dijkstra.component';
     AlgorithmeComponent,
     ToolBarComponent,
     DijkstraComponent,
+    HorizonComponent,
+    SnakeComponent
   ],
   imports: [
     BrowserModule,

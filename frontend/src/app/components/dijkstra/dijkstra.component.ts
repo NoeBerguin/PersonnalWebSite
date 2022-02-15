@@ -18,6 +18,7 @@ export class DijkstraComponent implements OnInit {
     this.rightToolBarService.open = true;
     this.rightToolBarService.display = 'block';
     this.rightToolBarService.width = 'calc(90% - 78px)';
+    this.rightToolBarService.mode = 1;
   }
 
   ngAfterViewInit(): void {

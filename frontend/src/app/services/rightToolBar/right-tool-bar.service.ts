@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class RightToolBarService {
   open: boolean = false;
   display: string = 'none';
-  width: string = 'calc(90% - 78px)';
+  width: string = 'calc(100% - 78px)';
+  mode: number = 0;
   constructor() { }
 }

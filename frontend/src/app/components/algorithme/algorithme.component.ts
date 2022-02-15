@@ -23,6 +23,7 @@ export class AlgorithmeComponent implements OnInit {
     this.rightToolBarService.open = true;
     this.rightToolBarService.display = 'block';
     this.rightToolBarService.width = 'calc(90% - 78px)';
+    this.rightToolBarService.mode = 0;
   }
 
   ngAfterViewInit(): void {

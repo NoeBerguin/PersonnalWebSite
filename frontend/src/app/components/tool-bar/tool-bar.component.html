@@ -1,6 +1,6 @@
 <div id="toolBar" *ngIf="this.rightToolBarService.open" [ngStyle]="{'display': rightToolBarService.display}">
     <h1 id="titleToolBar">Options</h1>
-    <div class="option">
+    <div class="option" *ngIf="rightToolBarService.mode === 0">
         <p>number of obstacles:
             <mat-slider thumbLabel [value]="aStar.obstacles" (change)="setObstacles($event)" tickInterval="10" step="10"
                 min="0" max="1000" aria-label="units">
@@ -8,4 +8,14 @@
         </p>
         <button mat-raised-button routerLink="/algorithme" (click)="reset()">Reset</button>
     </div>
+
+    <div class="option" *ngIf="rightToolBarService.mode === 1">
+        <p>number of node:
+            <mat-slider thumbLabel [value]="aStar.obstacles" (change)="setDijkstraObstacles($event)" tickInterval="10" step="10"
+                min="0" max="100" aria-label="units">
+            </mat-slider>
+        </p>
+        <button mat-raised-button (click)="dijkstra.reset()">Reset</button>
+    </div>
+
 </div>

@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 export interface DijkstraCell {
   x: number;
   y: number;
-  connections: Connection[];
+  parent: DijkstraCell;
+  value: number;
+  connection: DijkstraCell[];
 
 }
 
@@ -11,7 +13,6 @@ export interface Connection {
   DijkstraCellA: DijkstraCell;
   DijkstraCellB: DijkstraCell;
   value: number;
-  parent: Connection;
 }
 
 
@@ -23,15 +24,31 @@ export class DijlstraService {
   nbDijkstraCell: number = 20;
   matrix: DijkstraCell[] = [];
   DijkstraCellSize: number = 10;
-  openList: Connection[] = [];
-  closeList: Connection[] = [];
+  openList: DijkstraCell[] = [];
+  closeList: DijkstraCell[] = [];
   click: number = 0;
   start: DijkstraCell = null;
   end: DijkstraCell = null;
   currentConnection: Connection = null;
   currentCell: DijkstraCell = null;
+  listConnection: Connection[] = [];
 
   constructor() { }
+
+  reset() {
+    this.matrix = [];
+    this.openList = [];
+    this.closeList = [];
+    this.end = null;
+    this.start = null;
+    this.listConnection = [];
+    this.click = 0;
+    this.currentCell = null;
+    this.currentConnection = null;
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    this.createMatrix();
+    this.connectDijkstraCells();
+  }
 
   setCanvas(ctx: CanvasRenderingContext2D) {
     this.ctx = ctx;
@@ -49,9 +66,10 @@ export class DijlstraService {
     for (let i = 0; i < this.nbDijkstraCell; i++) {
       const x = this.getRandomInt(0 + this.ctx.canvas.width * 0.05, this.ctx.canvas.width);
       const y = this.getRandomInt(0 + this.ctx.canvas.height * 0.05, this.ctx.canvas.height);
-      const DijkstraCell = { x: x, y: y, connections: [] };
+      const DijkstraCell = { x: x, y: y, parent: null, value: null, connection: [] };
       this.matrix.push(DijkstraCell);
       this.drawDijkstraCell(DijkstraCell, "black");
+      this.setIndexName(DijkstraCell);
     }
   }
 
@@ -59,6 +77,7 @@ export class DijlstraService {
     this.ctx.beginPath();
     this.ctx.arc(DijkstraCell.x, DijkstraCell.y, this.DijkstraCellSize, 0, 2 * Math.PI);
     this.ctx.stroke();
+    this.ctx.strokeStyle = color;
     this.ctx.fillStyle = color;
     this.ctx.fill();
   }
@@ -74,12 +93,14 @@ export class DijlstraService {
       this.ctx.beginPath();
       this.ctx.moveTo(this.matrix[i].x, this.matrix[i].y);
       this.ctx.lineTo(this.matrix[index2].x, this.matrix[index2].y);
+      this.ctx.lineWidth = 1;
+      this.ctx.strokeStyle = "black";
       this.ctx.stroke();
+      this.matrix[i].connection.push(this.matrix[index2]);
+      this.matrix[index2].connection.push(this.matrix[i]);
       const value = Math.round(Math.sqrt(Math.pow((this.matrix[i].x - this.matrix[index2].x), 2) + Math.pow((this.matrix[i].y - this.matrix[index2].y), 2)));
-      console.log(value);
-      const connection: Connection = { DijkstraCellA: this.matrix[i], DijkstraCellB: this.matrix[index2], value: value, parent: null };
-      this.matrix[i].connections.push(connection);
-      this.matrix[index2].connections.push(connection);
+      const connection: Connection = { DijkstraCellA: this.matrix[i], DijkstraCellB: this.matrix[index2], value: value };
+      this.listConnection.push(connection);
       this.setVallue(connection);
     }
   }
@@ -94,10 +115,17 @@ export class DijlstraService {
   }
 
   setVallue(connection: Connection) {
+    this.ctx.fillStyle = "black";
     const x: number = Math.min(connection.DijkstraCellA.x, connection.DijkstraCellB.x) + Math.abs(connection.DijkstraCellA.x - connection.DijkstraCellB.x) / 2 + 20;
     const y: number = Math.min(connection.DijkstraCellA.y, connection.DijkstraCellB.y) + Math.abs(connection.DijkstraCellA.y - connection.DijkstraCellB.y) / 2 + 20;
     this.ctx.font = "16px Arial";
     this.ctx.fillText(connection.value.toString(), x, y);
+  }
+
+  setIndexName(cell: DijkstraCell) {
+    this.ctx.fillStyle = "red";
+    this.ctx.font = "19px Arial";
+    this.ctx.fillText(this.findDijkstraCell(cell).toString(), cell.x + 15, cell.y);
   }
 
   findDijkstraCell(DijkstraCellToFind: DijkstraCell): number {
@@ -114,92 +142,136 @@ export class DijlstraService {
   mouseClick(event: MouseEvent): void {
     this.click++;
     const bounds = this.ctx.canvas.getBoundingClientRect();
-    const DijkstraCellIndex: number = this.findDijkstraCell({ x: event.clientX - bounds.left, y: event.clientY - bounds.top, connections: [] });
+    const DijkstraCellIndex: number = this.findDijkstraCell({ x: event.clientX - bounds.left, y: event.clientY - bounds.top, parent: null, value: null, connection: [] });
     this.drawDijkstraCell(this.matrix[DijkstraCellIndex], "blue");
     if (this.click === 1) {
       this.start = this.matrix[DijkstraCellIndex];
     } else if (this.click === 2) {
       this.end = this.matrix[DijkstraCellIndex];
       this.calculate(this.start, this.end);
-      this.click = 0;
+    }
+    else {
+      this.reset();
     }
   }
 
-  reset() {
-  }
+
 
   calculate(startDijkstraCell: DijkstraCell, endDijkstraCell: DijkstraCell) {
     this.currentCell = startDijkstraCell;
-    this.addCellConnectionsToOpenList(this.currentCell, null);
-    this.currentConnection = this.findMinConnection(this.openList);
-    this.colorConnection(this.currentConnection, 'red');
-    this.closeList.push(this.currentConnection);
-    this.removeConnectionToOpenList(this.currentConnection);
-    this.currentCell = this.findCurrentCell(this.currentConnection);
+    this.currentCell.value = 0;
+    this.currentCell.parent = this.currentCell;
+    this.openList.push(this.currentCell);
+    const startDijkstraCellIndex: number = this.findDijkstraCell(startDijkstraCell);
+    console.log('start index: ', startDijkstraCellIndex);
+    console.log(startDijkstraCell);
+    const endDijkstraCellIndex: number = this.findDijkstraCell(endDijkstraCell);
+    console.log('end index: ', endDijkstraCellIndex);
 
     let i = 0;
-    while (this.currentCell !== endDijkstraCell) {
-      this.addCellConnectionsToOpenList(this.currentCell, this.currentConnection);
-      this.currentConnection = this.findMinConnection(this.openList);
-      this.colorConnection(this.currentConnection, 'red');
-      this.closeList.push(this.currentConnection);
-      this.removeConnectionToOpenList(this.currentConnection);
-      this.currentCell = this.findCurrentCell(this.currentConnection);
+    while (this.currentCell !== endDijkstraCell && this.openList.length > 0) {
+      this.currentCell = this.findMinCellValue();
+      this.drawDijkstraCell(this.currentCell, "red");
+      this.removeCellToOpenList(this.currentCell)
+      this.closeList.push(this.currentCell);
+      this.addNeighboursToOpenList(this.currentCell);
       i++;
-      console.log(this.openList)
     }
 
-    while (this.currentConnection.DijkstraCellA !== startDijkstraCell || this.currentConnection.DijkstraCellB !== startDijkstraCell) {
-      this.colorConnection(this.currentConnection, 'blue');
-      this.currentConnection = this.currentConnection.parent;
+    if (this.openList.length > 0) {
+      while (this.currentCell !== startDijkstraCell) {
+        const DijkstraCellIndex: number = this.findDijkstraCell(this.currentCell);
+        console.log('index: ', DijkstraCellIndex);
+        console.log(this.currentCell);
+        this.drawDijkstraCell(this.currentCell, "green");
+        this.colorConnection(this.findConnection(this.currentCell, this.currentCell.parent), "green");
+        this.currentCell = this.currentCell.parent;
+      }
     }
 
   }
 
-  findCurrentCell(connection: Connection) {
-    if (this.currentCell === connection.DijkstraCellA) {
-      return connection.DijkstraCellB;
-    } else {
-      return connection.DijkstraCellA;
-    }
-  }
-
-  findMinConnection(list: Connection[]): Connection {
-    let min: Connection = list[0];
-    for (let i = 1; i < list.length; i++) {
-      if (list[i].value < min.value) {
-        min = list[i];
+  findMinCellValue(): DijkstraCell {
+    let min: DijkstraCell = this.openList[0];
+    for (let i = 1; i < this.openList.length; i++) {
+      if (this.openList[i].value < min.value) {
+        min = this.openList[i];
       }
     }
     return min;
   }
 
-  addCellConnectionsToOpenList(cell: DijkstraCell, parentConnection: Connection) {
-    for (let connection of cell.connections) {
-      this.openList.push(connection);
-      if (parentConnection !== null) {
-        connection.value += parentConnection.value;
-        connection.parent = parentConnection;
+  addNeighboursToOpenList(cell: DijkstraCell) {
+    for (let cellNeighbour of cell.connection) {
+      if (!this.checkIsInList(cellNeighbour, this.closeList) && !this.checkIsInList(cellNeighbour, this.openList)) {
+        this.openList.push(cellNeighbour);
       }
-      //this.colorConnection(connection, 'red');
+
+      if (!this.checkIsInList(cellNeighbour, this.closeList)) {
+        this.setValue(cellNeighbour, this.currentCell);
+      }
     }
   }
 
-  checkIsInCloseList(connectionToFind: Connection) {
-    for (let connection of this.closeList) {
-      if (connection === connectionToFind) {
+  setParent(children: DijkstraCell, parent: DijkstraCell) {
+    children.parent = parent;
+  }
+
+  setValue(children: DijkstraCell, parent: DijkstraCell) {
+    let connectionValue = this.findConnectionValue(children, parent);
+    if (connectionValue >= 0) {
+      const newValue = parent.value + connectionValue;
+      if (children.value === null) {
+        children.value = newValue;
+        this.setParent(children, parent);
+      }
+      else if (newValue < children.value) {
+        children.value = newValue;
+        this.setParent(children, parent);
+      }
+    }
+  }
+
+  findConnectionValue(cellA: DijkstraCell, cellB: DijkstraCell): number {
+    let connection = null;
+    for (let con of this.listConnection) {
+      if ((con.DijkstraCellA === cellA && con.DijkstraCellB === cellB) || (con.DijkstraCellA === cellB && con.DijkstraCellB === cellA)) {
+        connection = con;
+        break;
+      }
+    }
+    if (connection !== null) {
+      return connection.value;
+    }
+    else {
+      return -1;
+    }
+  }
+
+  findConnection(cellA: DijkstraCell, cellB: DijkstraCell): Connection {
+    for (let con of this.listConnection) {
+      if ((con.DijkstraCellA === cellA && con.DijkstraCellB === cellB) || (con.DijkstraCellA === cellB && con.DijkstraCellB === cellA)) {
+        return con;
+      }
+    }
+    return null;
+  }
+
+
+  checkIsInList(cellToFind: DijkstraCell, list: DijkstraCell[]) {
+    for (let cell of list) {
+      if (cell === cellToFind) {
         return true;
       }
     }
     return false;
   }
 
-  removeConnectionToOpenList(connectionToFind: Connection) {
-    let newList: Connection[] = [];
-    for (let connection of this.openList) {
-      if (connection !== connectionToFind) {
-        newList.push(connection);
-        console.log('erease');
+  removeCellToOpenList(cellToFind: DijkstraCell) {
+    let newList: DijkstraCell[] = [];
+    for (let cell of this.openList) {
+      if (cell !== cellToFind) {
+        newList.push(cell);
       }
     }
     this.openList = newList;

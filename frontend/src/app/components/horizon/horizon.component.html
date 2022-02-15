@@ -1,0 +1,24 @@
+<div id="mainBox">
+    <div id="toolBar">
+        <h2> OPTIONS</h2>
+        <button mat-raised-button (click)="reset()">
+            <mat-icon>sync</mat-icon>Reset
+        </button>
+        <p></p>
+        <p>Number of buildings
+            <mat-slider aria-label="unit(s)" (change)="changeNbBuildings($event)" thumbLabel tickInterval="10" step="10"
+                min="0" max="50" [value]="horizonService.nbBuildings"></mat-slider>
+        </p>
+
+        <mat-slide-toggle (change)="showCriticsPoints()">Show critcs points
+        </mat-slide-toggle>
+        <p></p>
+        <p></p>
+        <p></p>
+        <button mat-raised-button color="accent" (click)="calculSolution()">
+            <mat-icon>build</mat-icon>Calcul solution
+        </button>
+    </div>
+
+    <canvas #myCanvas [ngStyle]="{'display': displayBuilding}"></canvas>
+</div>
