@@ -15,7 +15,7 @@ section {
   scroll-snap-align: center;
 }
 
-.title{
+.title {
   display: flex;
   height: 10%;
   font-size: 4rem;
@@ -26,11 +26,20 @@ section {
   font-size: 4rem;
 }
 
-.boxEducation h2{
+.boxEducation h2 {
   font-size: 1.5rem;
 }
 
-.h2-link{
+h2 {
+  font-size: 1.5rem;
+}
+
+.box ul {
+  width: 80%;
+  align-items: center;
+}
+
+.h2-link {
   font-size: 1.5rem;
   margin-right: auto;
 }
@@ -41,7 +50,7 @@ section {
   width: 100%;
   //margin: auto;
   //margin-top: 2.5%;
-  flex-direction: row;
+  flex-direction: column;
   height: 80%;
 }
 
@@ -76,7 +85,7 @@ section {
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-.constactDescription{
+.constactDescription {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -84,7 +93,7 @@ section {
   margin: auto;
   text-align: left;
   align-items: center;
- // border: rgb(219, 92, 41) solid 1px;
+  // border: rgb(219, 92, 41) solid 1px;
   justify-content: center;
 }
 
@@ -101,22 +110,21 @@ section {
   //border: rgb(204, 0, 255) solid 1px;
   width: 48%;
   height: 100%;
-  margin:auto;
+  margin: auto;
   flex-direction: column;
-  
 }
 
-.constactBox{
+.constactBox {
   display: flex;
   //border: rgb(51, 142, 158) solid 1px;
   width: 100%;
   height: 48%;
-  margin:auto;
+  margin: auto;
   flex-direction: row;
   align-items: center;
 }
 
-.mediaImg{
+.mediaImg {
   margin: auto;
   //border: rgb(39, 52, 54) solid 1px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
@@ -141,9 +149,17 @@ section {
   background: url("../../../assets/section2.jpg");
 }
 
+.sousSousSection-V {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+  width: 100%;
+  //border: rgb(69, 206, 160) solid 1px;
+}
+
 .box {
   display: flex;
-  //border: blue solid 1px;
+  //  border: blue solid 1px;
   width: 45%;
   height: 100%;
   align-items: center;
@@ -151,6 +167,8 @@ section {
   flex-direction: column;
   margin: auto;
   color: rgb(0, 0, 0);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  padding: 2%;
 }
 
 .box-H {
@@ -166,7 +184,6 @@ section {
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-
 .polyLogo {
   display: flex;
   //border: blue solid 1px;
@@ -180,7 +197,7 @@ section {
   color: rgb(0, 0, 0);
 }
 
-.boxEducation{
+.boxEducation {
   display: flex;
   //border: rgb(23, 212, 108) solid 1px;
   width: 70%;
@@ -217,14 +234,11 @@ hr.solid {
   background: #b4b4b4;
 }
 .skill-bars {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 25px 30px;
   width: 100%;
   height: 100%;
   margin: auto;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  //box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   //border: red solid 1px;
 }
 
@@ -233,7 +247,6 @@ hr.solid {
   font-family: Helvetica;
   font-size: 2rem;
 }
-
 
 .skill-bars .bar {
   margin: 20px 0;
@@ -369,30 +382,30 @@ hr.solid {
   background: rgba(255, 255, 255, 0.8);
 }
 .logo {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
+  width: 100%;
+  position: relative;
+  //border-radius: 50%;
   //border: rgb(100, 100, 100) solid 3px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 .skill {
+  width: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
   //border: blue solid 1px;
-  padding: 3%;
+  padding-left: 3%;
+  margin: auto;
 }
 
 .skill-bars2 {
-  padding: 25px 30px;
   width: 100%;
-  height: 100%;
+  height: 90%;
   margin: auto;
   //border: red solid 1px;
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -435,7 +448,7 @@ hr.solid {
   padding: 4%;
 }
 
-a{
+a {
   color: #000;
   text-decoration: none;
 }
