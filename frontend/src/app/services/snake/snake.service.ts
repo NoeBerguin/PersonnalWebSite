@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Vec2 } from 'src/app/classes/vec2';
 
+export interface Sphere{
+  pos : Vec2;
+  radius : number;
+  maxRadius: number;
+  mouvement : number;
+  color : string;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +19,14 @@ export class SnakeService {
   public radius: number = 20;
   public origin: Vec2 = { x: 0, y: 0 };
   private interval = null;
+  public isMouse = false;
+  public futurePosition: Vec2 = {x:1, y:0};
+  public mousePosition: Vec2 = {x:0,y:0};
+  private listSphere: Sphere[] = [];
+  private listBombs: Vec2[] = [];
+  private imageBomb = new Image();
+  private gameRun = true;
+
 
   constructor() {
   }
@@ -21,22 +37,114 @@ export class SnakeService {
     }
   }
 
+
+  moveBombe(bomb: Vec2, dx:number, dy:number){
+    bomb.x += dx;
+    bomb.y += dy;
+  }
+
+  moveSphere(sphere: Sphere, dx:number, dy:number){
+    sphere.pos.x += dx;
+    sphere.pos.y += dy;
+  }
+
+  moveSnakePart(part: Vec2, dx:number, dy:number){
+    part.x += dx;
+    part.y += dy;
+  }
+
+  moveCamera(dx:number, dy:number){
+    for(let part of this.snake){
+      this.moveSnakePart(part, dx,dy);
+    }
+
+    for(let bomb of this.listBombs){
+      this.moveSnakePart(bomb, dx,dy);
+    }
+
+    for(let sphere of this.listSphere){
+      this.moveSphere(sphere, dx,dy);
+    }
+  }
+
   setCanvas(canvas: CanvasRenderingContext2D) {
     this.ctx = canvas;
     this.origin = { x: this.ctx.canvas.width / 2, y: this.ctx.canvas.height / 2 }
+    //this.futurePosition = this.origin;
     this.snake.push(this.origin);
-    for (let i = 0; i < 5; i++) {
-      this.snake.push({ x: this.origin.x + i * 30, y: this.origin.y });
+    for (let i = 0; i < 20; i++) {
+      this.snake.push({ x: this.origin.x +i*4, y: this.origin.y });
     }
 
     this.interval = setInterval(() => {
       this.routine();
-    }, 50);
+    }, 20);
+
+    this.imageBomb.src = 'assets/bomb.png';
+
+    this.generateSphere();
+    this.generateBombs();
+    console.log('bombs', this.listBombs.length);
   }
 
   routine() {
+    if(this.gameRun){
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+    if(this.isMouse){
+      this.futurePosition = this.generateFuturePosition(this.mousePosition, 4);
+     }
+    this.mouveSnake(this.snake, this.futurePosition.x, this.futurePosition.y);
     this.drawSnake(this.snake);
+    this.drawSpheres(-this.futurePosition.x, -this.futurePosition.y);
+    this.drawBombs(-this.futurePosition.x, -this.futurePosition.y);}
+  }
+
+  drawBombs(dx:number, dy:number){
+    let index = null;
+    for(let i=0; i<this.listBombs.length; i++){
+      if(this.lookBombColision(this.listBombs[i]) === 1){
+        index = i;
+      }
+      this.moveBombe(this.listBombs[i], dx,dy)
+      this.drawBomb(this.listBombs[i]);
+    }
+
+    if(index !== null){
+      this.listBombs.splice(index, 1);
+      this.gameOver();
+      this.gameRun= false;
+      console.log('game over');
+    }
+  }
+
+  gameOver(){
+    this.ctx.strokeStyle = "Black";
+    this.ctx.fillStyle = "Black";
+    this.ctx.font = "168px Helvetica";
+    this.ctx.fillText("GAME OVER", 0, this.origin.y);
+  }
+
+  drawSpheres(dx:number, dy:number){
+    let index = null;
+    for(let i=0; i<this.listSphere.length; i++){
+      if(this.lookColision(this.listSphere[i].pos) === 1){
+        index = i;
+      }
+      this.moveSphere(this.listSphere[i], dx,dy);
+      this.drawSphere(this.listSphere[i]);
+    }
+
+    if(index !== null){
+    this.listSphere.splice(index, 1);
+    this.addPartSnake();
+    this.addPartSnake();
+    this.addPartSnake();
+    console.log(this.snake.length);
+    }
+  }
+
+  addPartSnake(){
+    this.snake.push({x:this.snake[this.snake.length-1].x, y:this.snake[this.snake.length-1].y})
   }
 
   drawSnake(snake: Vec2[]) {
@@ -60,9 +168,11 @@ export class SnakeService {
       snake[i].x = snake[i - 1].x;
       snake[i].y = snake[i - 1].y;
       this.drawPart(snake[i], "grey");
+      this.moveSnakePart(snake[i],-dx,-dy);
     }
     snake[0].x += dx;
     snake[0].y += dy;
+    this.moveSnakePart(snake[0],-dx,-dy);
     this.drawPart(snake[0], "grey");
   }
 
@@ -86,7 +196,6 @@ export class SnakeService {
   }
 
   rotate(point: Vec2, yawn: number): Vec2 {
-    console.log(yawn);
     const angle = yawn;
     const x = point.x * Math.cos(angle) + point.y * Math.sin(angle);
     const y = -point.x * Math.sin(angle) + point.y * Math.cos(angle);
@@ -105,6 +214,91 @@ export class SnakeService {
       futurPoint = this.rotate({ x: -dx, y: 0 }, this.calculAngle(mouse, this.origin))
     }
     return futurPoint;
+  }
+
+
+  generateSphere(){
+    const nbSphere = this.getRandomInt(500, 1000);
+    for(let i=0; i<nbSphere; i++){
+      const radius = this.getRandomInt(5, 10);
+      const sphere= {
+        pos: {x: this.getRandomInt(-2000, 2000), y: this.getRandomInt(-1000, 1000)},
+        radius: radius,
+        maxRadius: radius,
+        mouvement:this.getRandomInt(-2, 0), 
+        color: this.randomColor()
+      }
+      this.listSphere.push(sphere);
+    }
+  }
+
+  drawSphere(sphere: Sphere) {
+    this.animateSphere(sphere)
+    this.ctx.beginPath();
+    this.ctx.arc(sphere.pos.x, sphere.pos.y, sphere.radius, 0, 2 * Math.PI);
+    this.ctx.stroke();
+    this.ctx.strokeStyle = sphere.color;
+    this.ctx.fillStyle = sphere.color;
+    this.ctx.fill();
+  }
+
+  animateSphere(sphere: Sphere){
+    if(sphere.mouvement ===0){
+      sphere.radius += 0.1;
+      if(sphere.radius >= sphere.maxRadius * 1.1){
+        sphere.mouvement = -1
+      }
+    }else{
+      sphere.radius -= 0.1;
+      if(sphere.radius <= sphere.maxRadius * 0.9){
+        sphere.mouvement =0
+      }
+    }
+  }
+
+  randomColor() {
+    let r = this.getRandomInt(0, 255).toString();
+    let v = this.getRandomInt(0, 255).toString();
+    let b = this.getRandomInt(0, 255).toString();
+    return "rgba(" + r + "," + v + ',' + b + ', 0.8)'
+  }
+
+  getRandomInt(min, max): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  lookColision(pos:Vec2) : number{
+
+    if(pos.x - this.snake[0].x  <= this.radius && pos.x - this.snake[0].x >= -this.radius){
+      if(pos.y - this.snake[0].y <= this.radius && pos.y - this.snake[0].y >= -this.radius){
+        return 1;
+      }
+    }
+    return 0;
+  }
+
+  lookBombColision(pos:Vec2) : number{
+
+    if(pos.x - this.snake[0].x  <= this.radius && pos.x - this.snake[0].x >= -this.imageBomb.width){
+      if(pos.y - this.snake[0].y <= this.radius && pos.y - this.snake[0].y >= -this.imageBomb.height){
+        return 1;
+      }
+    }
+    return 0;
+  }
+
+  drawBomb(bomb: Vec2){
+    this.ctx.drawImage(this.imageBomb, bomb.x, bomb.y, this.imageBomb.width, this.imageBomb.height);
+  }
+
+  generateBombs(){
+    const nbBomb = this.getRandomInt(15, 200);
+    for(let i =0; i< nbBomb; i++){
+      const bomb = {x: this.getRandomInt(-1000, 2000), y: this.getRandomInt(-1000, 2000)};
+      this.listBombs.push(bomb);
+    }
   }
 
 }

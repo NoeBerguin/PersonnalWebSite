@@ -9,34 +9,117 @@
 }
 
 section {
-  //border: blue solid 1px;
+  //border: red solid 1px;
   width: 100%;
   height: 100%;
   scroll-snap-align: center;
 }
 
-section h1 {
+.title{
   display: flex;
   height: 10%;
   font-size: 4rem;
   //border: rgb(0, 255, 42) solid 1px;
-  margin: auto;
   align-items: center;
   flex-direction: row;
   font-family: Helvetica;
   font-size: 4rem;
-  margin-top: 5%;
+}
+
+.boxEducation h2{
+  font-size: 1.5rem;
+}
+
+.h2-link{
+  font-size: 1.5rem;
+  margin-right: auto;
 }
 
 .sousSection {
   display: flex;
   //border: rgb(204, 0, 255) solid 1px;
   width: 100%;
-  margin: auto;
+  //margin: auto;
+  //margin-top: 2.5%;
+  flex-direction: row;
+  height: 80%;
+}
+
+.sousSection2 {
+  display: flex;
+  //border: rgb(219, 92, 41) solid 1px;
+  width: 100%;
+  //margin: auto;
   //margin-top: 2.5%;
   flex-direction: row;
   height: 100%;
-  margin-bottom: 10%;
+}
+
+.sousSection2-2 {
+  display: flex;
+  //border: rgb(219, 92, 41) solid 1px;
+  width: 100%;
+  //margin: auto;
+  //margin-top: 2.5%;
+  flex-direction: row;
+  height: 60%;
+}
+
+.sousSection2-1 {
+  display: flex;
+  //border: rgb(219, 92, 41) solid 1px;
+  width: 40%;
+  //margin: auto;
+  //margin-top: 2.5%;
+  flex-direction: row;
+  height: 30%;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.constactDescription{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  text-align: left;
+  align-items: center;
+ // border: rgb(219, 92, 41) solid 1px;
+  justify-content: center;
+}
+
+.sousSection-H {
+  display: flex;
+  //border: rgb(204, 0, 255) solid 1px;
+  width: 100%;
+  height: 80%;
+  flex-direction: column;
+}
+
+.sousSection-H2 {
+  display: flex;
+  //border: rgb(204, 0, 255) solid 1px;
+  width: 48%;
+  height: 100%;
+  margin:auto;
+  flex-direction: column;
+  
+}
+
+.constactBox{
+  display: flex;
+  //border: rgb(51, 142, 158) solid 1px;
+  width: 100%;
+  height: 48%;
+  margin:auto;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mediaImg{
+  margin: auto;
+  //border: rgb(39, 52, 54) solid 1px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 .mainBox {
@@ -44,13 +127,14 @@ section h1 {
   //border: red solid 1px;
   flex-direction: column;
   height: 100%;
-  width: 70%;
+  width: 100%;
   margin: auto;
   align-items: center;
+  background: rgba(255, 255, 255, 0.95);
 }
 
 #s1 {
-  background: url("../../../assets/section1.jpg");
+  background: url("../../../assets/ink.jpg");
 }
 
 #s2 {
@@ -62,6 +146,45 @@ section h1 {
   //border: blue solid 1px;
   width: 45%;
   height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  color: rgb(0, 0, 0);
+}
+
+.box-H {
+  display: flex;
+  //border: blue solid 1px;
+  width: 90%;
+  height: 25%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: auto;
+  color: rgb(0, 0, 0);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.polyLogo {
+  display: flex;
+  //border: blue solid 1px;
+  width: 30%;
+  height: 100%;
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: auto;
+  color: rgb(0, 0, 0);
+}
+
+.boxEducation{
+  display: flex;
+  //border: rgb(23, 212, 108) solid 1px;
+  width: 70%;
+  height: 50%;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -94,15 +217,28 @@ hr.solid {
   background: #b4b4b4;
 }
 .skill-bars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 25px 30px;
   width: 100%;
-  height: 70%;
+  height: 100%;
   margin: auto;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   //border: red solid 1px;
 }
+
+.skill-bars h2 {
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 2rem;
+}
+
+
 .skill-bars .bar {
   margin: 20px 0;
+  width: 100%;
+  height: 10%;
 }
 .skill-bars .bar:first-child {
   margin-top: 0px;
@@ -144,7 +280,7 @@ hr.solid {
   border-radius: 10px;
   transform: scaleX(0);
   transform-origin: left;
-  background: #ee9065;
+  background: #838383;
   animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 .bar .progress-line.html span {
@@ -233,11 +369,10 @@ hr.solid {
   background: rgba(255, 255, 255, 0.8);
 }
 .logo {
-  width: 80px;
-  height: 80px;
-
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  border: rgb(100, 100, 100) solid 3px;
+  //border: rgb(100, 100, 100) solid 3px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -263,7 +398,7 @@ hr.solid {
 }
 
 #s3 {
-  background: url("../../../assets/section3.jpg");
+  //
 }
 
 #mainBox3 {
@@ -282,19 +417,6 @@ hr.solid {
   flex-direction: row;
 }
 
-.project {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: rgb(100, 100, 100) solid 3px;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-  width: 30%;
-  height: 50%;
-  padding: 2%;
-  color: #000;
-}
-
 .subTitle {
   //border: red solid 1px;
   color: rgb(100, 100, 100);
@@ -305,10 +427,15 @@ hr.solid {
 .plusBtn {
   //border: blue solid 1px;
   background-color: rgba(255, 255, 255, 1);
-  border: rgb(100, 100, 100) solid 3px;
+  //border: rgb(100, 100, 100) solid 3px;
   color: #000;
   margin: auto;
   text-align: center;
   align-items: center;
   padding: 4%;
+}
+
+a{
+  color: #000;
+  text-decoration: none;
 }

@@ -12,5 +12,5 @@ export class AppComponent {
   ) { }
 
 
-  title = 'BrainNew';
+  title = 'Noe Berguin';
 }

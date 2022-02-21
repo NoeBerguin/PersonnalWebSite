@@ -6,6 +6,7 @@ import { AlgorithmeComponent } from './components/algorithme/algorithme.componen
 import { DijkstraComponent } from './components/dijkstra/dijkstra.component';
 import { HorizonComponent } from './components/horizon/horizon.component';
 import { SnakeComponent } from './components/snake/snake.component';
+import { SpaceInvadersComponent } from './components/space-invaders/space-invaders.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/curriculumVitae', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'dijkstra', component: DijkstraComponent },
   { path: 'horizon', component: HorizonComponent },
   { path: 'snake', component: SnakeComponent },
+  { path: 'spaceInvaders', component: SpaceInvadersComponent },
 ];
 
 @NgModule({

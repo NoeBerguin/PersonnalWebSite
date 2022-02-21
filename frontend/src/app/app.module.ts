@@ -70,6 +70,7 @@ import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 import { DijkstraComponent } from './components/dijkstra/dijkstra.component';
 import { HorizonComponent } from './components/horizon/horizon.component';
 import { SnakeComponent } from './components/snake/snake.component';
+import { SpaceInvadersComponent } from './components/space-invaders/space-invaders.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,8 @@ import { SnakeComponent } from './components/snake/snake.component';
     ToolBarComponent,
     DijkstraComponent,
     HorizonComponent,
-    SnakeComponent
+    SnakeComponent,
+    SpaceInvadersComponent
   ],
   imports: [
     BrowserModule,

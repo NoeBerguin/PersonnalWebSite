@@ -18,17 +18,32 @@ export class SnakeComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.ctx = this.myCanvas.nativeElement.getContext('2d');
-    this.ctx.canvas.width = window.innerWidth * 0.95;
-    this.ctx.canvas.height = window.innerHeight * 0.99;
+    this.ctx.canvas.width = window.innerWidth;
+    this.ctx.canvas.height = window.innerHeight;
 
     this.ctx.canvas.addEventListener('click', (event) => {
       this.snakeService.mouveSnake(this.snakeService.snake, 0, -10);
     })
 
     this.ctx.canvas.addEventListener('mousemove', (event) => {
+    
       const mouse = this.getMousePos(event);
-      const futurePos = this.snakeService.generateFuturePosition(mouse, 2);
-      this.snakeService.mouveSnake(this.snakeService.snake, futurePos.x, futurePos.y);
+      if(mouse.x === this.snakeService.mousePosition.x && mouse.y === this.snakeService.mousePosition.y){
+        this.snakeService.isMouse = false;
+        console.log('stop');
+      }else{
+        this.snakeService.isMouse = true;
+        this.snakeService.mousePosition = this.getMousePos(event);}
+    })
+
+    this.ctx.canvas.addEventListener('mouseout', (event) => {
+      console.log('out');
+      this.snakeService.isMouse = false;
+    })
+
+    this.ctx.canvas.addEventListener('mouseenter', (event) => {
+      console.log('in');
+      this.snakeService.isMouse = true;
     })
 
     this.snakeService.setCanvas(this.ctx);
