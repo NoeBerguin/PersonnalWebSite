@@ -21,7 +21,7 @@ export interface Connection {
 })
 export class DijlstraService {
   public ctx: CanvasRenderingContext2D;
-  nbDijkstraCell: number = 20;
+  nbDijkstraCell: number = 4;
   matrix: DijkstraCell[] = [];
   DijkstraCellSize: number = 10;
   openList: DijkstraCell[] = [];
@@ -48,11 +48,61 @@ export class DijlstraService {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.createMatrix();
     this.connectDijkstraCells();
+    this.Prim();
+  }
+
+  Prim(){
+    let currentCell = this.matrix[0];
+    let tree : DijkstraCell[] = [];
+    tree.push(currentCell);
+    for(let i =0; i< this.matrix.length ; i++){
+      let minCell = null;
+      let minDistance = 10000; 
+      for(let cell of this.matrix){
+        if(this.isCellAlreadyInTree(tree, cell)){
+          const distance = this.findDistanceCell(currentCell, cell);
+          if(minCell === null){
+            minDistance = distance;
+            minCell = cell;
+          }else if(distance < minDistance){
+            minCell = cell;
+            minDistance = distance;
+          }
+        }
+      }
+      if(minCell !== null){
+        console.log('add connection', minCell, currentCell)
+        tree.push(minCell)
+        const connection: Connection = { DijkstraCellA: currentCell,
+           DijkstraCellB: minCell, value: (minDistance) };
+        this.colorConnection(connection, "black");
+        this.listConnection.push(connection);
+        //this.setVallue(connection);
+        currentCell.connection.push(minCell);
+        minCell.connection.push(currentCell);
+        currentCell = minCell;
+      }
+    }
+    console.log(tree);
+  }
+
+  isCellAlreadyInTree(tree : DijkstraCell[], cellToFind : DijkstraCell){
+    for(let cell of tree){
+      if(cell.x === cellToFind.x && cell.y === cellToFind.y){
+        return false
+      }
+    }
+    return true;
+  }
+
+  findDistanceCell(currentCell: DijkstraCell, cell: DijkstraCell){
+    return Math.sqrt(Math.pow(currentCell.x- cell.x, 2) + Math.pow(currentCell.y - cell.y, 2));
   }
 
   setCanvas(ctx: CanvasRenderingContext2D) {
     this.ctx = ctx;
     this.createMatrix();
+    this.Prim();
     this.connectDijkstraCells();
   }
 
@@ -98,10 +148,10 @@ export class DijlstraService {
       this.ctx.stroke();
       this.matrix[i].connection.push(this.matrix[index2]);
       this.matrix[index2].connection.push(this.matrix[i]);
-      const value = Math.round(Math.sqrt(Math.pow((this.matrix[i].x - this.matrix[index2].x), 2) + Math.pow((this.matrix[i].y - this.matrix[index2].y), 2)));
+      const value = (Math.sqrt(Math.pow((this.matrix[i].x - this.matrix[index2].x), 2) + Math.pow((this.matrix[i].y - this.matrix[index2].y), 2)));
       const connection: Connection = { DijkstraCellA: this.matrix[i], DijkstraCellB: this.matrix[index2], value: value };
       this.listConnection.push(connection);
-      this.setVallue(connection);
+      //this.setVallue(connection);
     }
   }
 
@@ -167,6 +217,7 @@ export class DijlstraService {
     console.log(startDijkstraCell);
     const endDijkstraCellIndex: number = this.findDijkstraCell(endDijkstraCell);
     console.log('end index: ', endDijkstraCellIndex);
+    console.log(endDijkstraCell);
 
     let i = 0;
     while (this.currentCell !== endDijkstraCell && this.openList.length > 0) {
@@ -177,9 +228,11 @@ export class DijlstraService {
       this.addNeighboursToOpenList(this.currentCell);
       i++;
     }
+    console.log('lase current cell ',this.currentCell);
 
-    if (this.openList.length > 0) {
+    
       while (this.currentCell !== startDijkstraCell) {
+        console.log(1);
         const DijkstraCellIndex: number = this.findDijkstraCell(this.currentCell);
         console.log('index: ', DijkstraCellIndex);
         console.log(this.currentCell);
@@ -187,7 +240,7 @@ export class DijlstraService {
         this.colorConnection(this.findConnection(this.currentCell, this.currentCell.parent), "green");
         this.currentCell = this.currentCell.parent;
       }
-    }
+    
 
   }
 

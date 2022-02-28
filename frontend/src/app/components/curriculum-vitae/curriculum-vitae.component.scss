@@ -27,7 +27,8 @@ section {
 }
 
 .boxEducation h2 {
-  font-size: 1.5rem;
+  text-align: center;
+  font-size: 4000%;
 }
 
 h2 {
@@ -152,14 +153,15 @@ h2 {
 .sousSousSection-V {
   display: flex;
   flex-direction: row;
-  height: 50%;
+  height: 48%;
   width: 100%;
   //border: rgb(69, 206, 160) solid 1px;
+  margin: auto;
 }
 
 .box {
   display: flex;
-  //  border: blue solid 1px;
+  //border: blue solid 1px;
   width: 45%;
   height: 100%;
   align-items: center;
@@ -169,6 +171,22 @@ h2 {
   color: rgb(0, 0, 0);
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   padding: 2%;
+}
+
+.box2 {
+  display: flex;
+  //  border: blue solid 1px;
+  width: 31%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  color: rgb(0, 0, 0);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  padding: 2%;
+  font-family: Helvetica;
+  font-size: 1rem;
 }
 
 .box-H {
@@ -186,9 +204,9 @@ h2 {
 
 .polyLogo {
   display: flex;
-  //border: blue solid 1px;
-  width: 30%;
-  height: 100%;
+  border: blue solid 1px;
+  //width: 30%;
+  height: 90%;
   padding: 3%;
   align-items: center;
   justify-content: center;
@@ -199,7 +217,7 @@ h2 {
 
 .boxEducation {
   display: flex;
-  //border: rgb(23, 212, 108) solid 1px;
+  border: rgb(23, 212, 108) solid 1px;
   width: 70%;
   height: 50%;
   align-items: center;
@@ -207,6 +225,8 @@ h2 {
   flex-direction: column;
   margin: auto;
   color: rgb(0, 0, 0);
+
+  font-size: 5%;
 }
 
 p {
@@ -238,6 +258,8 @@ hr.solid {
   width: 100%;
   height: 100%;
   margin: auto;
+  font-family: Helvetica;
+  font-size: 2rem;
   //box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
   //border: red solid 1px;
 }
