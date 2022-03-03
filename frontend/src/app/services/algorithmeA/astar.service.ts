@@ -71,7 +71,6 @@ export class AstarService {
   }
 
   genrateObstacle() {
-    console.log('obstacles: ', this.obstacles);
     for (let i = 0; i < this.obstacles; i++) {
       let index: number = this.getRandomInt(0, this.nbCells);
       this.cellMap[index].type = 1;
@@ -108,7 +107,6 @@ export class AstarService {
   mouseClick(event: MouseEvent): void {
     const bounds = this.ctx.canvas.getBoundingClientRect();
     const cellIndex: number = this.findCell({ x: event.clientX - bounds.left, y: event.clientY - bounds.top, type: 0 });
-    console.log(cellIndex);
     if (cellIndex !== null) {
       if (this.clickIndex === 1) {
         this.startCell = cellIndex;
@@ -120,7 +118,6 @@ export class AstarService {
       } else {
         this.init(this.cellMap, this.startCell, this.endCell);
         const output: Output = this.calculate();
-        console.log(output);
         this.colorCells(output);
         this.clickIndex = 0;
       }
@@ -186,7 +183,6 @@ export class AstarService {
         this.addToCloseList(node, this.closeList);
       }
     }
-    console.log('close list : ', this.closeList);
   }
 
 
@@ -234,7 +230,6 @@ export class AstarService {
 
   addToOpenList(node: Node, listNode: Node[], parent: Node) {
     if (!this.idElementInList(node, this.closeList) && node.type === 0) {
-      console.log('node add : ', node);
       node.parent = parent;
       this.calculG(node);
       this.calculH(node);

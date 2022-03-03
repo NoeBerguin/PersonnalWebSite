@@ -84,7 +84,6 @@ export class SnakeService {
 
     this.generateSphere();
     this.generateBombs();
-    console.log('bombs', this.listBombs.length);
   }
 
   routine() {
@@ -113,7 +112,6 @@ export class SnakeService {
       this.listBombs.splice(index, 1);
       this.gameOver();
       this.gameRun= false;
-      console.log('game over');
     }
   }
 
@@ -139,7 +137,6 @@ export class SnakeService {
     this.addPartSnake();
     this.addPartSnake();
     this.addPartSnake();
-    console.log(this.snake.length);
     }
   }
 

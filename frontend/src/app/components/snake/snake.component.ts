@@ -30,19 +30,17 @@ export class SnakeComponent implements OnInit {
       const mouse = this.getMousePos(event);
       if(mouse.x === this.snakeService.mousePosition.x && mouse.y === this.snakeService.mousePosition.y){
         this.snakeService.isMouse = false;
-        console.log('stop');
+
       }else{
         this.snakeService.isMouse = true;
         this.snakeService.mousePosition = this.getMousePos(event);}
     })
 
     this.ctx.canvas.addEventListener('mouseout', (event) => {
-      console.log('out');
       this.snakeService.isMouse = false;
     })
 
     this.ctx.canvas.addEventListener('mouseenter', (event) => {
-      console.log('in');
       this.snakeService.isMouse = true;
     })
 

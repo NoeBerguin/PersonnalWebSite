@@ -1,0 +1,94 @@
+#s1 {
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  height: 8%;
+}
+h1 {
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 4rem;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 2rem;
+  margin: auto;
+  height: 20%;
+}
+
+.box100V {
+  //border: rgb(0, 255, 42) solid 1px;
+  width: 100%;
+  height: 45%;
+  display: flex;
+  flex-direction: row;
+}
+
+.box50V {
+  display: table;
+  //border: rgb(0, 153, 255) solid 1px;
+  width: 45%;
+  height: 97%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: justify;
+  font-family: Helvetica;
+  font-size: 1.3rem;
+  line-height: 150%;
+  align-items: center;
+}
+
+.box50H {
+  display: table;
+  //border: rgb(0, 153, 255) solid 1px;
+  width: 45%;
+  height: 97%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  text-align: justify;
+  font-family: Helvetica;
+  font-size: 1.3rem;
+  line-height: 150%;
+  align-items: center;
+}
+
+.box25V {
+  display: table;
+  //border: rgb(0, 153, 255) solid 1px;
+  width: 35%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: justify;
+  font-family: Helvetica;
+  font-size: 1.3rem;
+  line-height: 150%;
+  align-items: center;
+}
+
+img {
+  margin: auto;
+}
+
+p {
+  margin: auto;
+}
+
+.box50V p {
+  //border: rgb(0, 153, 255) solid 1px;
+  height: 80%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#s2 {
+  display: flex;
+}

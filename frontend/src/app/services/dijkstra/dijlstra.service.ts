@@ -21,7 +21,7 @@ export interface Connection {
 })
 export class DijlstraService {
   public ctx: CanvasRenderingContext2D;
-  nbDijkstraCell: number = 4;
+  nbDijkstraCell: number = 10;
   matrix: DijkstraCell[] = [];
   DijkstraCellSize: number = 10;
   openList: DijkstraCell[] = [];
@@ -51,30 +51,31 @@ export class DijlstraService {
     this.Prim();
   }
 
-  Prim(){
+  Prim() {
     let currentCell = this.matrix[0];
-    let tree : DijkstraCell[] = [];
+    let tree: DijkstraCell[] = [];
     tree.push(currentCell);
-    for(let i =0; i< this.matrix.length ; i++){
+    for (let i = 0; i < this.matrix.length; i++) {
       let minCell = null;
-      let minDistance = 10000; 
-      for(let cell of this.matrix){
-        if(this.isCellAlreadyInTree(tree, cell)){
+      let minDistance = 10000;
+      for (let cell of this.matrix) {
+        if (this.isCellAlreadyInTree(tree, cell)) {
           const distance = this.findDistanceCell(currentCell, cell);
-          if(minCell === null){
+          if (minCell === null) {
             minDistance = distance;
             minCell = cell;
-          }else if(distance < minDistance){
+          } else if (distance < minDistance) {
             minCell = cell;
             minDistance = distance;
           }
         }
       }
-      if(minCell !== null){
-        console.log('add connection', minCell, currentCell)
+      if (minCell !== null) {
         tree.push(minCell)
-        const connection: Connection = { DijkstraCellA: currentCell,
-           DijkstraCellB: minCell, value: (minDistance) };
+        const connection: Connection = {
+          DijkstraCellA: currentCell,
+          DijkstraCellB: minCell, value: (minDistance)
+        };
         this.colorConnection(connection, "black");
         this.listConnection.push(connection);
         //this.setVallue(connection);
@@ -83,20 +84,19 @@ export class DijlstraService {
         currentCell = minCell;
       }
     }
-    console.log(tree);
   }
 
-  isCellAlreadyInTree(tree : DijkstraCell[], cellToFind : DijkstraCell){
-    for(let cell of tree){
-      if(cell.x === cellToFind.x && cell.y === cellToFind.y){
+  isCellAlreadyInTree(tree: DijkstraCell[], cellToFind: DijkstraCell) {
+    for (let cell of tree) {
+      if (cell.x === cellToFind.x && cell.y === cellToFind.y) {
         return false
       }
     }
     return true;
   }
 
-  findDistanceCell(currentCell: DijkstraCell, cell: DijkstraCell){
-    return Math.sqrt(Math.pow(currentCell.x- cell.x, 2) + Math.pow(currentCell.y - cell.y, 2));
+  findDistanceCell(currentCell: DijkstraCell, cell: DijkstraCell) {
+    return Math.sqrt(Math.pow(currentCell.x - cell.x, 2) + Math.pow(currentCell.y - cell.y, 2));
   }
 
   setCanvas(ctx: CanvasRenderingContext2D) {
@@ -213,11 +213,7 @@ export class DijlstraService {
     this.currentCell.parent = this.currentCell;
     this.openList.push(this.currentCell);
     const startDijkstraCellIndex: number = this.findDijkstraCell(startDijkstraCell);
-    console.log('start index: ', startDijkstraCellIndex);
-    console.log(startDijkstraCell);
     const endDijkstraCellIndex: number = this.findDijkstraCell(endDijkstraCell);
-    console.log('end index: ', endDijkstraCellIndex);
-    console.log(endDijkstraCell);
 
     let i = 0;
     while (this.currentCell !== endDijkstraCell && this.openList.length > 0) {
@@ -228,19 +224,15 @@ export class DijlstraService {
       this.addNeighboursToOpenList(this.currentCell);
       i++;
     }
-    console.log('lase current cell ',this.currentCell);
 
-    
-      while (this.currentCell !== startDijkstraCell) {
-        console.log(1);
-        const DijkstraCellIndex: number = this.findDijkstraCell(this.currentCell);
-        console.log('index: ', DijkstraCellIndex);
-        console.log(this.currentCell);
-        this.drawDijkstraCell(this.currentCell, "green");
-        this.colorConnection(this.findConnection(this.currentCell, this.currentCell.parent), "green");
-        this.currentCell = this.currentCell.parent;
-      }
-    
+
+    while (this.currentCell !== startDijkstraCell) {
+      const DijkstraCellIndex: number = this.findDijkstraCell(this.currentCell);
+      this.drawDijkstraCell(this.currentCell, "green");
+      this.colorConnection(this.findConnection(this.currentCell, this.currentCell.parent), "green");
+      this.currentCell = this.currentCell.parent;
+    }
+
 
   }
 

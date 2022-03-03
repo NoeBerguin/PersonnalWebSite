@@ -1,0 +1,91 @@
+<div class="containerr">
+
+    <section id="s1">
+        <div class="title">
+            <h1>Projet crazyflie</h1>
+        </div>
+
+        <div class="box100V">
+            <div class="box50V">
+                <img src="../../../../assets/crazyflie.png">
+            </div>
+            <div class="box50V">
+                <h2>Objectifs</h2>
+                <p>L’objectif de ce projet est d'implémenter une application web qui permet de
+                    contrôler un essaim de drone. Ce dernier doit etre capable d'explorer un environnement inconnu et
+                    générer une carte à partir des données recueillies. Ces résultats sont
+                    rapportés sur une interface utilisateur web. Le projet peut être lancé dans
+                    un environnement simulé ou physique.</p>
+            </div>
+        </div>
+        <div class="box100V">
+            <div class="box50V">
+                <p>Pour répondre aux exigences, nous avons décidé de séparer notre projet en quatres
+                    applications (voir image-ci dessous). Nous avons choisi d’utiliser le framework Angular
+                    pour créer notre interface web, car tous les membres de l’équipe possédaient déjà de
+                    l’expérience avec ce framework. Pour le serveur, nous avons opté pour Python, car le
+                    API de crazy-radio était en python. Nous avons décidé d’utiliser la librairie Flask pour
+                    gérer les requêtes HTTP entre le serveur et l’interface utilisateur</p>
+            </div>
+            <div class="box50V">
+                <img src="../../../../assets/simCarte.gif">
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="s2">
+        <img src="../../../../assets/shemaVision.png">
+    </section>
+
+    <section id="s3">
+        <div class="box100V">
+            <div class="box25V">
+                <p>Docker est un outil qui peut empaqueter une application et ses dépendances dans un conteneur isolé,
+                    qui pourra être exécuté sur n'importe quel serveur. Cet outils nous a permis de creer un conteneur
+                    pour chaque sous-applicatication de notre systeme.</p>
+                <br>
+                <p>Nous avons également utilisé Docker compose qui vient appuyer docker en permettant un meilleur
+                    controle sur les
+                    conteneurs et egalement une meilleur communication entre eux.</p>
+            </div>
+            <div class="box50H">
+                <img src="../../../../assets/docker.png" width="40%">
+                <img src="../../../../assets/dockerCompose.png" width="40%">
+            </div>
+        </div>
+        <div class="box100V">
+            <div class="box50V">
+                <img src="../../../../assets/manette.png" width="100%">
+            </div>
+            <div class="box25V">
+                Pour effectuer nos test nous avons decider de connecter une manette de PS4 aux drones pour pouvoir les
+                controller. Cela nous a permis d'économiser ennormement de temps.
+            </div>
+        </div>
+    </section>
+
+    <section id="s4">
+        <div class="box100V">
+            <div class="box25V">
+                <p>Les drones doivent pouvoir retourner a leurs point de depart. Pour ce faire ils calculent leurs
+                    trajectoirs
+                    avec l'algorithme A*.</p>
+            </div>
+            <div class="box50H">
+                <img src="../../../../assets/AStar.png" width="50%">
+            </div>
+        </div>
+        <div class="box100V">
+            <div class="box25V">
+                <p>Les drone sont capable de detecter les obstacles et de les eviter. Il sont par la suite stocker en
+                    memoire pour le chemin de retour.</p>
+            </div>
+            <div class="box50H">
+                <img src="../../../../assets/collision.gif" width="80%">
+            </div>
+        </div>
+    </section>
+
+</div>

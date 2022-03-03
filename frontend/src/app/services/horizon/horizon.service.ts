@@ -223,9 +223,6 @@ export class HorizonService {
         solution.push(point);
       }
     }
-    //this.listCriticPoints = solution;
-    //console.log('solution', solution);
-    //this.drawHorizon(solution);
     return solution;
   }
 

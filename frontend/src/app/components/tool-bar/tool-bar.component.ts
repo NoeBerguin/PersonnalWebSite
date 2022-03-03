@@ -21,13 +21,11 @@ export class ToolBarComponent implements OnInit {
   }
 
   setObstacles(event: any) {
-    console.log(event);
     this.aStar.obstacles = event.value;
     this.reset();
   }
 
   setDijkstraObstacles(event: any) {
-    console.log(event);
     this.dijkstra.nbDijkstraCell = event.value;
     this.dijkstra.reset();
   }

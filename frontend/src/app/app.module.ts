@@ -71,6 +71,8 @@ import { DijkstraComponent } from './components/dijkstra/dijkstra.component';
 import { HorizonComponent } from './components/horizon/horizon.component';
 import { SnakeComponent } from './components/snake/snake.component';
 import { SpaceInvadersComponent } from './components/space-invaders/space-invaders.component';
+import { CrazyflieComponent } from './components/crazyflie/crazyflie/crazyflie.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -118,7 +120,9 @@ import { SpaceInvadersComponent } from './components/space-invaders/space-invade
     DijkstraComponent,
     HorizonComponent,
     SnakeComponent,
-    SpaceInvadersComponent
+    SpaceInvadersComponent,
+    CrazyflieComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

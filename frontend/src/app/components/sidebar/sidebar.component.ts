@@ -45,7 +45,7 @@ export class SidebarComponent implements OnInit {
   }
 
   openToolBar() {
-    console.log('algorithme tool bar');
+    
     //this.toolBar = true;
     this.rightToolBarService.open = true;
     this.rightToolBarService.display = 'block';

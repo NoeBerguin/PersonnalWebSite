@@ -11,8 +11,8 @@
 
     <div class="option" *ngIf="rightToolBarService.mode === 1">
         <p>number of node:
-            <mat-slider thumbLabel [value]="aStar.obstacles" (change)="setDijkstraObstacles($event)" tickInterval="10" step="10"
-                min="0" max="100" aria-label="units">
+            <mat-slider thumbLabel [value]="dijkstra.nbDijkstraCell" (change)="setDijkstraObstacles($event)"
+                tickInterval="10" step="10" min="0" max="100" aria-label="units">
             </mat-slider>
         </p>
         <button mat-raised-button (click)="dijkstra.reset()">Reset</button>
