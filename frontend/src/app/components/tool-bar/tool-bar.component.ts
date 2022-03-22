@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AstarService } from 'src/app/services/algorithmeA/astar.service';
+import { CubeService } from 'src/app/services/cube/cube.service';
 import { DijlstraService } from 'src/app/services/dijkstra/dijlstra.service';
 import { RightToolBarService } from 'src/app/services/rightToolBar/right-tool-bar.service';
 
@@ -10,7 +11,7 @@ import { RightToolBarService } from 'src/app/services/rightToolBar/right-tool-ba
 })
 export class ToolBarComponent implements OnInit {
 
-  constructor(public aStar: AstarService, public rightToolBarService: RightToolBarService, private dijkstra: DijlstraService) { }
+  constructor(public aStar: AstarService, public rightToolBarService: RightToolBarService, private dijkstra: DijlstraService, private cube: CubeService) { }
 
 
   ngOnInit(): void {

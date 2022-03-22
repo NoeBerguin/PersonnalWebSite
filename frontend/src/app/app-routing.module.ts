@@ -8,6 +8,7 @@ import { HorizonComponent } from './components/horizon/horizon.component';
 import { SnakeComponent } from './components/snake/snake.component';
 import { SpaceInvadersComponent } from './components/space-invaders/space-invaders.component';
 import { CrazyflieComponent } from './components/crazyflie/crazyflie/crazyflie.component';
+import { CubeComponent } from './components/cube/cube.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/curriculumVitae', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'snake', component: SnakeComponent },
   { path: 'spaceInvaders', component: SpaceInvadersComponent },
   { path: 'crazyflie', component: CrazyflieComponent },
+  { path: 'cube', component: CubeComponent },
 ];
 
 @NgModule({

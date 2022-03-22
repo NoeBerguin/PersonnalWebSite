@@ -18,4 +18,19 @@
         <button mat-raised-button (click)="dijkstra.reset()">Reset</button>
     </div>
 
+    <div class="option" *ngIf="rightToolBarService.mode === 2">
+        <p>number of cube:
+            <mat-slider thumbLabel [value]="cube.nbCube" (change)="resetCubeList()" tickInterval="10" step="10" min="0"
+                max="100" aria-label="units">
+            </mat-slider>
+        </p>
+        <button mat-raised-button (click)="cube.sortX()">SortX</button>
+        <p></p>
+        <button mat-raised-button (click)="cube.glouton()">Glouton</button>
+        <p></p>
+        <button mat-raised-button (click)="cube.sortDynamique()">Dynamic sort</button>
+        <p></p>
+        <button mat-raised-button (click)="cube.dynamique()">Dynamique</button>
+    </div>
+
 </div>
