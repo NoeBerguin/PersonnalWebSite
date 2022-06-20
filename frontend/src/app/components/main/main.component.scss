@@ -4,6 +4,7 @@
   top: 0;
   left: 78px;
   width: calc(90% - 78px);
+  height: 100%;
   transition: all 0.5s ease;
   z-index: 2;
   //border: red solid 1px;
@@ -18,4 +19,8 @@
   font-size: 25px;
   font-weight: 500;
   margin: 18px;
+}
+
+#appContainer{
+  height: 100%;
 }

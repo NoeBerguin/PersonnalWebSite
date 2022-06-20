@@ -8,6 +8,8 @@ import { HorizonComponent } from './components/horizon/horizon.component';
 import { SnakeComponent } from './components/snake/snake.component';
 import { SpaceInvadersComponent } from './components/space-invaders/space-invaders.component';
 import { CrazyflieComponent } from './components/crazyflie/crazyflie/crazyflie.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AgeOfEmpireComponent } from './components/age-of-empire/age-of-empire.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/curriculumVitae', pathMatch: 'full' },
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'snake', component: SnakeComponent },
   { path: 'spaceInvaders', component: SpaceInvadersComponent },
   { path: 'crazyflie', component: CrazyflieComponent },
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'aoe', component: AgeOfEmpireComponent },
 ];
 
 @NgModule({

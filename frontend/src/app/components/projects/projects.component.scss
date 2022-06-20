@@ -1,0 +1,22 @@
+#mainBox{
+    border: 1px red solid;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+}
+
+.projects{
+    border: 5px gray solid;
+    height: 45%;
+    margin: auto;
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 6px ;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}

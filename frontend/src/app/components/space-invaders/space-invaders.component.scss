@@ -4,7 +4,10 @@
 .contain {
   position: relative;
   width: 100%;
-  //border: solid 1px rgb(238, 106, 106);
+  height: 100%;
+  border: solid 1px rgb(238, 106, 106);
+  background-image: url("../../../assets/wp2555900-space-background.gif");
+  background-size: cover;
 }
 
 .image {

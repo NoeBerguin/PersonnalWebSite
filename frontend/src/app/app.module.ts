@@ -73,6 +73,8 @@ import { SnakeComponent } from './components/snake/snake.component';
 import { SpaceInvadersComponent } from './components/space-invaders/space-invaders.component';
 import { CrazyflieComponent } from './components/crazyflie/crazyflie/crazyflie.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AgeOfEmpireComponent } from './components/age-of-empire/age-of-empire.component';
 
 @NgModule({
   declarations: [
@@ -122,7 +124,9 @@ import { ModalComponent } from './components/modal/modal.component';
     SnakeComponent,
     SpaceInvadersComponent,
     CrazyflieComponent,
-    ModalComponent
+    ModalComponent,
+    ProjectsComponent,
+    AgeOfEmpireComponent
   ],
   imports: [
     BrowserModule,
