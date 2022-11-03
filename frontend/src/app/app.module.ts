@@ -76,6 +76,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { CubeComponent } from './components/cube/cube.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AgeOfEmpireComponent } from './components/age-of-empire/age-of-empire.component';
+import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +129,8 @@ import { AgeOfEmpireComponent } from './components/age-of-empire/age-of-empire.c
     ModalComponent,
     CubeComponent,
     ProjectsComponent,
-    AgeOfEmpireComponent
+    AgeOfEmpireComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,

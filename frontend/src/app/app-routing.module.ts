@@ -11,6 +11,7 @@ import { CrazyflieComponent } from './components/crazyflie/crazyflie/crazyflie.c
 import { CubeComponent } from './components/cube/cube.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AgeOfEmpireComponent } from './components/age-of-empire/age-of-empire.component';
+import { ImageComponent } from './components/image/image.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/curriculumVitae', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'cube', component: CubeComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'aoe', component: AgeOfEmpireComponent },
+  { path: 'image', component: ImageComponent },
 ];
 
 @NgModule({
